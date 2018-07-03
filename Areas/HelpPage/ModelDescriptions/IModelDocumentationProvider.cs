@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace EformBase.Pn.Areas.HelpPage.ModelDescriptions
+namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

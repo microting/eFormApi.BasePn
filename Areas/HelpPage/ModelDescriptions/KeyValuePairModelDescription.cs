@@ -1,4 +1,4 @@
-namespace EformBase.Pn.Areas.HelpPage.ModelDescriptions
+namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     public class KeyValuePairModelDescription : ModelDescription
     {

@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using EformBase.Pn.Areas.HelpPage.ModelDescriptions;
-using EformBase.Pn.Areas.HelpPage.Models;
+using eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
+using eFormApi.BasePn.Areas.HelpPage.Models;
 
-namespace EformBase.Pn.Areas.HelpPage
+namespace eFormApi.BasePn.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

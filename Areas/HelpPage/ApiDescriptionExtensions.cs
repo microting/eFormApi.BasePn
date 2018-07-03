@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace EformBase.Pn.Areas.HelpPage
+namespace eFormApi.BasePn.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

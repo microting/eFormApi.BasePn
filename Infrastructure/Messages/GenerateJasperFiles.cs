@@ -1,4 +1,4 @@
-﻿namespace EformBase.Pn.Infrastructure.Messages
+﻿namespace eFormApi.BasePn.Infrastructure.Messages
 {
     public class GenerateJasperFiles
     {

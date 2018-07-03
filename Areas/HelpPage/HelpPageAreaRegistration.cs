@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace EformBase.Pn.Areas.HelpPage
+namespace eFormApi.BasePn.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

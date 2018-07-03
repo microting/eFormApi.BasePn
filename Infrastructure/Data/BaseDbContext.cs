@@ -1,8 +1,8 @@
 ﻿using System.Data.Entity;
-using EformBase.Pn.Infrastructure.Data.Entities;
+using eFormApi.BasePn.Infrastructure.Data.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace EformBase.Pn.Infrastructure.Data
+namespace eFormApi.BasePn.Infrastructure.Data
 {
     public class BaseDbContext : IdentityDbContext<EformUser, EformRole,
         int, EformUserLogin, EformUserRole, EformUserClaim>

@@ -3,7 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Rebus.Handlers;
 
-namespace EformBase.Pn.Infrastructure.Installers
+namespace eFormApi.BasePn.Infrastructure.Installers
 {
     public class RebusHandlerInstaller : IWindsorInstaller
     {

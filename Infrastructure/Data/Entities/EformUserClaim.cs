@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace EformBase.Pn.Infrastructure.Data.Entities
+namespace eFormApi.BasePn.Infrastructure.Data.Entities
 {
     public class EformUserClaim : IdentityUserClaim<int>
     {

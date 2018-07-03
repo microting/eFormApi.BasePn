@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using EformBase.Pn.Areas.HelpPage.ModelDescriptions;
-using EformBase.Pn.Areas.HelpPage.Models;
+using eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
+using eFormApi.BasePn.Areas.HelpPage.Models;
 
-namespace EformBase.Pn.Areas.HelpPage.Controllers
+namespace eFormApi.BasePn.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

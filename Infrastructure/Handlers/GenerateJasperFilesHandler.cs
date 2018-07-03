@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using eFormCore;
-using EformBase.Pn.Infrastructure.Messages;
+using eFormApi.BasePn.Infrastructure.Messages;
 using Rebus.Handlers;
 
-namespace EformBase.Pn.Infrastructure.Handlers
+namespace eFormApi.BasePn.Infrastructure.Handlers
 {
     public class GenerateJasperFilesHandler : IHandleMessages<GenerateJasperFiles>
     {

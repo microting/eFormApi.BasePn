@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace EformBase.Pn.Areas.HelpPage.ModelDescriptions
+namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

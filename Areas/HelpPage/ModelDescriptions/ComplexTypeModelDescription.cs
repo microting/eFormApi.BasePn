@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace EformBase.Pn.Areas.HelpPage.ModelDescriptions
+namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

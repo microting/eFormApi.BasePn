@@ -5,11 +5,11 @@ using System.Web.Http;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using eFormCore;
-using EformBase.Pn.Infrastructure.Installers;
+using eFormApi.BasePn.Infrastructure.Installers;
 using NLog;
 using Rebus.Bus;
 
-namespace EformBase.Pn.Infrastructure
+namespace eFormApi.BasePn.Infrastructure
 {
     public class EFormCoreHelper
     {

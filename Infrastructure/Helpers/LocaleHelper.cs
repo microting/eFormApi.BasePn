@@ -1,7 +1,7 @@
 ﻿using System.Threading;
-using EformBase.Pn.Properties;
+using Microting.eFormApi.BasePn.Properties;
 
-namespace EformBase.Pn.Infrastructure.Helpers
+namespace eFormApi.BasePn.Infrastructure.Helpers
 {
     public static class LocaleHelper
     {

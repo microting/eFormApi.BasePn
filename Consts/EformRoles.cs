@@ -1,4 +1,4 @@
-﻿namespace EformBase.Pn.Consts
+﻿namespace eFormApi.BasePn.Consts
 {
     public class EformRoles
     {

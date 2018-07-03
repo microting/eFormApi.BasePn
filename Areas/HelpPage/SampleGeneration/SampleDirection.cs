@@ -1,4 +1,4 @@
-namespace EformBase.Pn.Areas.HelpPage
+namespace eFormApi.BasePn.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using EformBase.Pn.Areas.HelpPage.ModelDescriptions;
+using eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
 
-namespace EformBase.Pn.Areas.HelpPage.Models
+namespace eFormApi.BasePn.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

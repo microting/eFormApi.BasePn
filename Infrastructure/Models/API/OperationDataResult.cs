@@ -1,4 +1,4 @@
-﻿namespace EformBase.Pn.Infrastructure.Models.API
+﻿namespace eFormApi.BasePn.Infrastructure.Models.API
 {
     public class OperationDataResult<TModel> : OperationResult
     {

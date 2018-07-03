@@ -1,6 +1,6 @@
 using System;
 
-namespace EformBase.Pn.Areas.HelpPage.ModelDescriptions
+namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.
