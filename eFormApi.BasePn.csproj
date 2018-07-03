@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EformBase.Pn</RootNamespace>
-    <AssemblyName>EformBase.Pn</AssemblyName>
+    <AssemblyName>Microting.eFormApi.BasePn</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
