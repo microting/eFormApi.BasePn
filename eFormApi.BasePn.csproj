@@ -236,13 +236,10 @@
     <None Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
     <None Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
     <None Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
-    <None Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
     <None Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
     <None Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
     <None Include="Areas\HelpPage\Views\Help\Index.cshtml" />
     <None Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
-    <None Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
-    <None Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -259,7 +256,6 @@
     <Analyzer Include="packages\AWSSDK.SQS.3.3.3.7\analyzers\dotnet\cs\AWSSDK.SQS.CodeAnalysis.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="JasperExporter.jar" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
