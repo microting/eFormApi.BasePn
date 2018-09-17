@@ -339,3 +339,5 @@ Plugins/EformBase/Castle.Core.dll
 Plugins/EformBase/AWSSDK.SQS.dll
 Plugins/EformBase/AWSSDK.Core.xml
 Plugins/EformBase/AWSSDK.Core.dll
+
+old\.state/
