@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using eFormData;
 using eFormShared;
+using Microsoft.Extensions.Localization;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models.Common;
 using Microting.eFormApi.BasePn.Models.SearchableList;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
     public class EntitySearchService : IEntitySearchService
     {
         private readonly IEFormCoreService _coreHelper;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public EntitySearchService(IEFormCoreService coreHelper)
+        public EntitySearchService(IEFormCoreService coreHelper, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _coreHelper = coreHelper;
+            _localizer = localizer;
         }
 
         public OperationDataResult<EntityGroupList> GetEntityGroupList(

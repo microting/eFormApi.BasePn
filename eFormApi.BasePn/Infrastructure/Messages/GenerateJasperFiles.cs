@@ -6,7 +6,7 @@
 
         public GenerateJasperFiles(int templateId)
         {
-            this.TemplateId = templateId;
+            TemplateId = templateId;
         }
     }
 }

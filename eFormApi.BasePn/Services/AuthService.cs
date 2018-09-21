@@ -7,16 +7,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Database.Entities;
 using Microting.eFormApi.BasePn.Helpers;
-using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models.Application;
 using Microting.eFormApi.BasePn.Models.Auth;
+using Microting.eFormApi.BasePn.Resources;
 using OtpSharp;
 
 namespace Microting.eFormApi.BasePn.Services
@@ -26,14 +27,20 @@ namespace Microting.eFormApi.BasePn.Services
         private readonly IOptions<EformTokenOptions> _tokenOptions;
         private readonly IUserService _userService;
         private readonly IOptions<ApplicationSettings> _appSettings;
+        private readonly IStringLocalizer<SharedResource> _localizer;
         private readonly ILogger<AuthService> _logger;
         private readonly UserManager<EformUser> _userManager;
         private readonly RoleManager<EformRole> _roleManager;
         private readonly SignInManager<EformUser> _signInManager;
 
-        public AuthService(IOptions<EformTokenOptions> tokenOptions, ILogger<AuthService> logger,
-            IOptions<ApplicationSettings> appSettings, RoleManager<EformRole> roleManager,
-            SignInManager<EformUser> signInManager, UserManager<EformUser> userManager, IUserService userService)
+        public AuthService(IOptions<EformTokenOptions> tokenOptions, 
+            ILogger<AuthService> logger,
+            IOptions<ApplicationSettings> appSettings, 
+            RoleManager<EformRole> roleManager,
+            SignInManager<EformUser> signInManager, 
+            UserManager<EformUser> userManager, 
+            IUserService userService, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _tokenOptions = tokenOptions;
             _logger = logger;
@@ -42,6 +49,7 @@ namespace Microting.eFormApi.BasePn.Services
             _signInManager = signInManager;
             _userManager = userManager;
             _userService = userService;
+            _localizer = localizer;
         }
 
         public async Task<OperationDataResult<AuthorizeResult>> AuthenticateUser(LoginModel model)
@@ -284,7 +292,7 @@ namespace Microting.eFormApi.BasePn.Services
             if (user == null)
             {
                 return new OperationDataResult<GoogleAuthenticatorModel>(false,
-                    LocaleHelper.GetString("UserNameOrPasswordIncorrect"));
+                    _localizer["UserNameOrPasswordIncorrect"]);
             }
 
             var signInResult =
@@ -300,7 +308,7 @@ namespace Microting.eFormApi.BasePn.Services
 
                 // Credentials are invalid, or account doesn't exist
                 return new OperationDataResult<GoogleAuthenticatorModel>(false,
-                    LocaleHelper.GetString("UserNameOrPasswordIncorrect"));
+                    _localizer["UserNameOrPasswordIncorrect"]);
             }
 
             // check if two factor is enabled
@@ -329,7 +337,7 @@ namespace Microting.eFormApi.BasePn.Services
             if (!updateResult.Succeeded)
             {
                 return new OperationDataResult<GoogleAuthenticatorModel>(false,
-                    LocaleHelper.GetString("ErrorWhileUpdatingPSK"));
+                    _localizer["ErrorWhileUpdatingPSK"]);
             }
 
             // return

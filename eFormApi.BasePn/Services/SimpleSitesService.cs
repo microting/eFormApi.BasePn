@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using eFormShared;
+using Microsoft.Extensions.Localization;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
     public class SimpleSitesService : ISimpleSitesService
     {
         private readonly IEFormCoreService _coreHelper;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public SimpleSitesService(IEFormCoreService coreHelper)
+        public SimpleSitesService(IEFormCoreService coreHelper, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _coreHelper = coreHelper;
+            _localizer = localizer;
         }
 
         public OperationDataResult<List<Site_Dto>> Index()

@@ -7,13 +7,13 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
     {
         public static string GetString(string str)
         {
-            var message = Resources.ResourceManager.GetString(str, Thread.CurrentThread.CurrentCulture);
+            var message = "";//Resources.ResourceManager.GetString(str, Thread.CurrentThread.CurrentCulture);
             return message;
         }
 
         public static string GetString(string format, params object[] args)
         {
-            var message = Resources.ResourceManager.GetString(format, Thread.CurrentThread.CurrentCulture);
+            var message = "";//Resources.ResourceManager.GetString(format, Thread.CurrentThread.CurrentCulture);
             if (message == null)
             {
                 return null;

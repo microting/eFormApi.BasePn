@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Database.Entities;
@@ -13,6 +14,7 @@ using Microting.eFormApi.BasePn.Models.Application;
 using Microting.eFormApi.BasePn.Models.Auth;
 using Microting.eFormApi.BasePn.Models.Settings.User;
 using Microting.eFormApi.BasePn.Models.User;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
@@ -21,17 +23,20 @@ namespace Microting.eFormApi.BasePn.Services
         private readonly IUserService _userService;
         private readonly IWritableOptions<ApplicationSettings> _appSettings;
         private readonly ILogger<AccountService> _logger;
+        private readonly IStringLocalizer<SharedResource> _localizer;
         private readonly UserManager<EformUser> _userManager;
 
         public AccountService(UserManager<EformUser> userManager,
             IUserService userService,
             IWritableOptions<ApplicationSettings> appSettings, 
-            ILogger<AccountService> logger)
+            ILogger<AccountService> logger, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _userManager = userManager;
             _userService = userService;
             _appSettings = appSettings;
             _logger = logger;
+            _localizer = localizer;
         }
 
         public async Task<UserInfoViewModel> GetUserInfo()
