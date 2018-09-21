@@ -7,6 +7,7 @@ using eFormCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Database;
@@ -17,12 +18,14 @@ using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models.Application;
 using Microting.eFormApi.BasePn.Models.Settings.Admin;
 using Microting.eFormApi.BasePn.Models.Settings.Initial;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
     public class SettingsService : ISettingsService
     {
         private readonly ILogger<SettingsService> _logger;
+        private readonly IStringLocalizer<SharedResource> _localizer;
         private readonly IWritableOptions<ConnectionStrings> _connectionStrings;
         private readonly IWritableOptions<ApplicationSettings> _applicationSettings;
         private readonly IWritableOptions<LoginPageSettings> _loginPageSettings;
@@ -36,7 +39,8 @@ namespace Microting.eFormApi.BasePn.Services
             IWritableOptions<LoginPageSettings> loginPageSettings,
             IWritableOptions<HeaderSettings> headerSettings,
             IWritableOptions<EmailSettings> emailSettings,
-            IEFormCoreService coreHelper)
+            IEFormCoreService coreHelper, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _logger = logger;
             _connectionStrings = connectionStrings;
@@ -45,6 +49,7 @@ namespace Microting.eFormApi.BasePn.Services
             _headerSettings = headerSettings;
             _emailSettings = emailSettings;
             _coreHelper = coreHelper;
+            _localizer = localizer;
         }
 
         public OperationResult ConnectionStringExist()

@@ -2,22 +2,27 @@
 using System.Collections.Generic;
 using eFormData;
 using eFormShared;
+using Microsoft.Extensions.Localization;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models.Cases.Request;
 using Microting.eFormApi.BasePn.Models.Cases.Response;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
     public class CasesService : ICasesService
     {
         private readonly IEFormCoreService _coreHelper;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public CasesService(IEFormCoreService coreHelper)
+        public CasesService(IEFormCoreService coreHelper, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _coreHelper = coreHelper;
+            _localizer = localizer;
         }
 
         public OperationDataResult<CaseListModel> Index(CaseRequestModel requestModel)

@@ -3,9 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Database;
 using Microting.eFormApi.BasePn.Database.Entities;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
@@ -14,13 +16,16 @@ namespace Microting.eFormApi.BasePn.Services
         private readonly UserManager<EformUser> _userManager;
         private readonly IHttpContextAccessor _httpAccessor;
         private readonly BaseDbContext _dbContext;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
         public UserService(BaseDbContext dbContext,
             UserManager<EformUser> userManager,
-            IHttpContextAccessor httpAccessor)
+            IHttpContextAccessor httpAccessor, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _userManager = userManager;
             _httpAccessor = httpAccessor;
+            _localizer = localizer;
             _dbContext = dbContext;
         }
 

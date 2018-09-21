@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models.Common;
 using Microting.eFormApi.BasePn.Models.Tags;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
@@ -13,12 +15,15 @@ namespace Microting.eFormApi.BasePn.Services
     {
         private readonly IEFormCoreService _coreHelper;
         private readonly ILogger<TagsService> _logger;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
         public TagsService(ILogger<TagsService> logger,
-            IEFormCoreService coreHelper)
+            IEFormCoreService coreHelper, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _logger = logger;
             _coreHelper = coreHelper;
+            _localizer = localizer;
         }
 
         public OperationDataResult<List<CommonDictionaryModel>> GetAllTags()

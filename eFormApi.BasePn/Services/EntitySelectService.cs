@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using eFormData;
 using eFormShared;
+using Microsoft.Extensions.Localization;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models.Common;
 using Microting.eFormApi.BasePn.Models.SelectableList;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
     public class EntitySelectService : IEntitySelectService
     {
         private readonly IEFormCoreService _coreHelper;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
-        public EntitySelectService(IEFormCoreService coreHelper)
+        public EntitySelectService(IEFormCoreService coreHelper, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _coreHelper = coreHelper;
+            _localizer = localizer;
         }
 
         public OperationDataResult<EntityGroupList> GetEntityGroupList(

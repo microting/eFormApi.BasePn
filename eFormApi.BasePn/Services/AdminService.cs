@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Database.Entities;
@@ -13,6 +14,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models.Application;
 using Microting.eFormApi.BasePn.Models.Common;
 using Microting.eFormApi.BasePn.Models.User;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
@@ -21,17 +23,20 @@ namespace Microting.eFormApi.BasePn.Services
         private readonly IUserService _userService;
         private readonly IWritableOptions<ApplicationSettings> _appSettings;
         private readonly ILogger<AdminService> _logger;
+        private readonly IStringLocalizer<SharedResource> _localizer;
         private readonly UserManager<EformUser> _userManager;
 
         public AdminService(ILogger<AdminService> logger,
             UserManager<EformUser> userManager,
             IWritableOptions<ApplicationSettings> appSettings,
-            IUserService userService)
+            IUserService userService, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _logger = logger;
             _userManager = userManager;
             _appSettings = appSettings;
             _userService = userService;
+            _localizer = localizer;
         }
 
         public async Task<OperationDataResult<UserRegisterModel>> GetUser(int userId)

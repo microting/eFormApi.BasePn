@@ -4,6 +4,7 @@ using System.Linq;
 using eFormCore;
 using eFormShared;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Helpers.WritableOptions;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers;
@@ -11,6 +12,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Models.API;
 using Microting.eFormApi.BasePn.Models;
 using Microting.eFormApi.BasePn.Models.Application;
 using Microting.eFormApi.BasePn.Models.Templates;
+using Microting.eFormApi.BasePn.Resources;
 
 namespace Microting.eFormApi.BasePn.Services
 {
@@ -18,12 +20,15 @@ namespace Microting.eFormApi.BasePn.Services
     {
         private readonly IWritableOptions<ConnectionStrings> _connectionStrings;
         private readonly IEFormCoreService _coreHelper;
+        private readonly IStringLocalizer<SharedResource> _localizer;
 
         public TemplatesService(IWritableOptions<ConnectionStrings> connectionStrings,
-            IEFormCoreService coreHelper)
+            IEFormCoreService coreHelper, 
+            IStringLocalizer<SharedResource> localizer)
         {
             _connectionStrings = connectionStrings;
             _coreHelper = coreHelper;
+            _localizer = localizer;
         }
 
         [HttpPost]

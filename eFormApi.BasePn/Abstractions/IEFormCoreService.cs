@@ -1,6 +1,6 @@
 ﻿using Rebus.Bus;
 
-namespace Microting.eFormApi.BasePn.Services
+namespace Microting.eFormApi.BasePn.Abstractions
 {
     public interface IEFormCoreService
     {
