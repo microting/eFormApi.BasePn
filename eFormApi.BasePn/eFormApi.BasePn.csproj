@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RootNamespace>Microting.eFormApi.BasePn</RootNamespace>
+    <AssemblyName>Microting.eFormApi.BasePn</AssemblyName>
   </PropertyGroup>
   
   <ItemGroup>
