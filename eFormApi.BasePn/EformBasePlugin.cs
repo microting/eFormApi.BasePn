@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microting.eFormApi.BasePn.Infrastructure.Helpers;
+using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
 
 namespace Microting.eFormApi.BasePn
 {
@@ -32,6 +32,12 @@ namespace Microting.eFormApi.BasePn
 
         public void ConfigureDbContext(IServiceCollection services, string connectionString)
         {
+        }
+
+        public MenuModel HeaderMenu()
+        {
+            var result = new MenuModel();
+            return result;
         }
 
         public void SeedDatabase(string connectionString)
