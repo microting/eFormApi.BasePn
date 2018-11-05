@@ -11,5 +11,8 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
 
         public List<MenuItemModel> MenuItems { get; set; }
             = new List<MenuItemModel>();
+
+        public List<string> Guards { get; set; }
+            = new List<string>();
     }
 }
