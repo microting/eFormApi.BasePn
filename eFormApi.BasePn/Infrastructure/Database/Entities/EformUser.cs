@@ -13,6 +13,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
         public bool IsGoogleAuthenticatorEnabled { get; set; }
         public string GoogleAuthenticatorSecretKey { get; set; }
 
-        public ICollection<EformUserRole> UserRoles { get; set; }
+        public virtual ICollection<EformUserRole> UserRoles { get; set; }
     }
 }
