@@ -11,10 +11,11 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
-using eFormApi.BasePn.Areas.HelpPage.Models;
+using Microting.eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
+using Microting.eFormApi.BasePn.Areas.HelpPage.Models;
+using Microting.eFormApi.BasePn.Areas.HelpPage.SampleGeneration;
 
-namespace eFormApi.BasePn.Areas.HelpPage
+namespace Microting.eFormApi.BasePn.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

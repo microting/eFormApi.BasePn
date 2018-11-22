@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
-using eFormApi.BasePn.Areas.HelpPage.Models;
+using Microting.eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
+using Microting.eFormApi.BasePn.Areas.HelpPage.Models;
 
-namespace eFormApi.BasePn.Areas.HelpPage.Controllers
+namespace Microting.eFormApi.BasePn.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

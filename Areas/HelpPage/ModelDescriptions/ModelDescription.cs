@@ -1,6 +1,6 @@
 using System;
 
-namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
+namespace Microting.eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

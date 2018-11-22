@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
+namespace Microting.eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

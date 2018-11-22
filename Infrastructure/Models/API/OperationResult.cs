@@ -1,4 +1,4 @@
-﻿namespace eFormApi.BasePn.Infrastructure.Models.API
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.API
 {
     public class OperationResult
     {

@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace eFormApi.BasePn.Areas.HelpPage
+namespace Microting.eFormApi.BasePn.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

@@ -1,7 +1,8 @@
 using System.Web.Http;
 using System.Web.Mvc;
+using Microting.eFormApi.BasePn.Areas.HelpPage.App_Start;
 
-namespace eFormApi.BasePn.Areas.HelpPage
+namespace Microting.eFormApi.BasePn.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {
