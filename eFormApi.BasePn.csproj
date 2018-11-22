@@ -200,15 +200,12 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Consts\EformRoles.cs" />
     <Compile Include="Infrastructure\Helpers\LocaleHelper.cs" />
-    <Compile Include="Infrastructure\Data\BaseDbContext.cs" />
     <Compile Include="Infrastructure\Data\Base\BaseEntity.cs" />
     <Compile Include="Infrastructure\Data\Entities\EformRole.cs" />
-    <Compile Include="Infrastructure\Data\Entities\EformRoleStore.cs" />
     <Compile Include="Infrastructure\Data\Entities\EformUser.cs" />
     <Compile Include="Infrastructure\Data\Entities\EformUserClaim.cs" />
     <Compile Include="Infrastructure\Data\Entities\EformUserLogin.cs" />
     <Compile Include="Infrastructure\Data\Entities\EformUserRole.cs" />
-    <Compile Include="Infrastructure\Data\Entities\EformUserStore.cs" />
     <Compile Include="Infrastructure\Handlers\GenerateJasperFilesHandler.cs" />
     <Compile Include="Infrastructure\EFormCoreHelper.cs" />
     <Compile Include="Infrastructure\Installers\RebusInstaller.cs" />
