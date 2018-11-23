@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
+using Microting.eFormApi.BasePn.Areas.HelpPage.ModelDescriptions;
 
-namespace eFormApi.BasePn.Areas.HelpPage.Models
+namespace Microting.eFormApi.BasePn.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

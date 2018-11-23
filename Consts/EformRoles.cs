@@ -1,4 +1,4 @@
-﻿namespace eFormApi.BasePn.Consts
+﻿namespace Microting.eFormApi.BasePn.Consts
 {
     public class EformRoles
     {

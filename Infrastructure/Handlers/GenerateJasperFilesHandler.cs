@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using eFormCore;
-using eFormApi.BasePn.Infrastructure.Messages;
+using Microting.eFormApi.BasePn.Infrastructure.Messages;
 using Rebus.Handlers;
 
-namespace eFormApi.BasePn.Infrastructure.Handlers
+namespace Microting.eFormApi.BasePn.Infrastructure.Handlers
 {
     public class GenerateJasperFilesHandler : IHandleMessages<GenerateJasperFiles>
     {

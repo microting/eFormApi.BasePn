@@ -1,6 +1,6 @@
 using System;
 
-namespace eFormApi.BasePn.Areas.HelpPage
+namespace Microting.eFormApi.BasePn.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// This represents an image sample on the help page. There's a display template named ImageSample associated with this class.

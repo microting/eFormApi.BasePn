@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
+namespace Microting.eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     public class EnumTypeModelDescription : ModelDescription
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace eFormApi.BasePn.Infrastructure.Data.Entities
+namespace Microting.eFormApi.BasePn.Infrastructure.Data.Entities
 {
     public class EformRole : IdentityRole<int, EformUserRole>
     {

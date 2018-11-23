@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace eFormApi.BasePn.Infrastructure.Data.Entities
+namespace Microting.eFormApi.BasePn.Infrastructure.Data.Entities
 {
     public class EformUser : IdentityUser<int, EformUserLogin, EformUserRole,
         EformUserClaim>

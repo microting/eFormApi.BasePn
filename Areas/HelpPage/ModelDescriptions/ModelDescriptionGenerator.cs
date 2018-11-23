@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
+namespace Microting.eFormApi.BasePn.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Generates model descriptions for given types.

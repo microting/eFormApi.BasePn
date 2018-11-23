@@ -1,4 +1,4 @@
-﻿namespace eFormApi.BasePn.Infrastructure.Messages
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Messages
 {
     public class GenerateJasperFiles
     {
