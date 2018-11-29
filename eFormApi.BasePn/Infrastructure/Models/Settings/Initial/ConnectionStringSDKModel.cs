@@ -8,5 +8,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Settings.Initial
         [Required] public string Catalogue { get; set; }
         [Required] public string Auth { get; set; }
         [Required] public string Token { get; set; }
+        [Required] public int Port { get; set; }
     }
 }
