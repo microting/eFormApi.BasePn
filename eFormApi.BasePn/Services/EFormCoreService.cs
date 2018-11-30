@@ -33,7 +33,7 @@ namespace Microting.eFormApi.BasePn.Services
 
         public Core GetCore()
         {
-            var connectionString = _connectionStrings.Value.SdkConnection;
+            string connectionString = _connectionStrings.Value.SdkConnection;
             if (string.IsNullOrEmpty(connectionString))
             {
                 _httpContextAccessor.HttpContext.Response.OnStarting(async () =>
@@ -44,7 +44,7 @@ namespace Microting.eFormApi.BasePn.Services
             }
 
             _core = new Core();
-            var connectionStr = _connectionStrings.Value.SdkConnection;
+            string connectionStr = _connectionStrings.Value.SdkConnection;
             bool running;
 
             try
