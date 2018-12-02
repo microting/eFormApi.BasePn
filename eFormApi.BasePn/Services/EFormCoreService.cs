@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Net;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
 using eFormCore;
-using eFormCore.Installers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers.WritableOptions;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
-using Rebus.Bus;
 
 namespace Microting.eFormApi.BasePn.Services
 {
@@ -19,8 +15,6 @@ namespace Microting.eFormApi.BasePn.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private Core _core;
         private readonly ILogger<EFormCoreService> _logger;
-        private IWindsorContainer _container;
-        public IBus Bus { get; private set; }
 
         public EFormCoreService(IWritableOptions<ConnectionStrings> connectionStrings,
             ILogger<EFormCoreService> logger,
@@ -62,11 +56,6 @@ namespace Microting.eFormApi.BasePn.Services
 
             if (running)
             {
-                _container = new WindsorContainer();
-                _container.Register(Component.For<Core>().Instance(_core));
-                _container.Install(new RebusHandlerInstaller(),
-                    new RebusInstaller(_connectionStrings.Value.DefaultConnection, 5, 5)); // TODO 1,1 parameters
-                Bus = _container.Resolve<IBus>();
                 return _core;
             }
 
