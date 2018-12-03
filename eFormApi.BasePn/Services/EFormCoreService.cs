@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers.WritableOptions;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
+using Rebus.Bus;
 
 namespace Microting.eFormApi.BasePn.Services
 {
@@ -15,6 +16,7 @@ namespace Microting.eFormApi.BasePn.Services
         private readonly IHttpContextAccessor _httpContextAccessor;
         private Core _core;
         private readonly ILogger<EFormCoreService> _logger;
+        public IBus Bus { get; set; }
 
         public EFormCoreService(IWritableOptions<ConnectionStrings> connectionStrings,
             ILogger<EFormCoreService> logger,
