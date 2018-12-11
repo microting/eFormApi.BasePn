@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.Extensions.Localization;
+using Microting.eFormApi.BasePn.Localization.Abstractions;
 
 namespace Microting.eFormApi.BasePn.Localization
 {
-    public class JsonStringLocalizerFactory : IStringLocalizerFactory
+    public class JsonStringLocalizerFactory : IEformLocalizerFactory
     {
         public IStringLocalizer Create(Type resourceSource)
         {
