@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
@@ -34,7 +35,7 @@ namespace Microting.eFormApi.BasePn
         {
         }
 
-        public MenuModel HeaderMenu()
+        public MenuModel HeaderMenu(IServiceProvider serviceProvider)
         {
             var result = new MenuModel();
             return result;
