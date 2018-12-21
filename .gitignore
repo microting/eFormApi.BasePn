@@ -329,3 +329,13 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 JasperExporter.jar
+Plugins/EformBase/da/Microting.eFormApi.BasePn.resources.dll
+Plugins/EformBase/Microting.eFormApi.BasePn.dll.config
+Plugins/EformBase/Microting.eForm.dll
+Plugins/EformBase/Castle.Core.xml
+Plugins/EformBase/Castle.Core.dll
+Plugins/EformBase/AWSSDK.SQS.dll
+Plugins/EformBase/AWSSDK.Core.xml
+Plugins/EformBase/AWSSDK.Core.dll
+Plugins/EformBase/Microting.eFormApi.BasePn.dll
+Plugins/EformBase/Microting.eForm.xml
