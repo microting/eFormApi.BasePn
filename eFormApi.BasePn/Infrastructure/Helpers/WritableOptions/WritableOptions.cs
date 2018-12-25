@@ -29,7 +29,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.WritableOptions
         public T Value => _options.CurrentValue;
         public T Get(string name) => _options.Get(name);
 
-        public void Update(Action<T> applyChanges)
+        public void UpdateFile(Action<T> applyChanges)
         {
             var fileProvider = _environment.ContentRootFileProvider;
             var fileInfo = fileProvider.GetFileInfo(_file);
