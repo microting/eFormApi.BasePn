@@ -3,8 +3,8 @@ using System.Net;
 using eFormCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Microting.eFormApi.BasePn.Abstractions;
-using Microting.eFormApi.BasePn.Infrastructure.Helpers.WritableOptions;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
 using Rebus.Bus;
 
@@ -12,13 +12,13 @@ namespace Microting.eFormApi.BasePn.Services
 {
   public class EFormCoreService : IEFormCoreService
     {
-        private readonly IWritableOptions<ConnectionStrings> _connectionStrings;
+        private readonly IOptions<ConnectionStringsSdk> _connectionStrings;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private Core _core;
         private readonly ILogger<EFormCoreService> _logger;
         public IBus Bus { get; set; }
 
-        public EFormCoreService(IWritableOptions<ConnectionStrings> connectionStrings,
+        public EFormCoreService(IOptions<ConnectionStringsSdk> connectionStrings,
             ILogger<EFormCoreService> logger,
             IHttpContextAccessor httpContextAccessor)
         {
