@@ -8,14 +8,11 @@ namespace Microting.eFormApi.BasePn
 {
     public class EformBasePlugin : IEformPlugin
     {
-        public string GetName() => "Microting eForm Base plugin";
+        public string Name => "Microting eForm Base plugin";
 
-        public string ConnectionStringName() => "EformBasePlugin";
+        public string PluginId => "EformBasePlugin";
 
-        public string PluginPath()
-        {
-            return PluginAssembly().Location;
-        }
+        public string PluginPath => PluginAssembly().Location;
 
         public Assembly PluginAssembly()
         {
