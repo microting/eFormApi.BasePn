@@ -8,9 +8,9 @@ namespace Microting.eFormApi.BasePn
 {
     public interface IEformPlugin
     {
-        string GetName();
-        string ConnectionStringName();
-        string PluginPath();
+        string Name { get; }
+        string PluginId { get; }
+        string PluginPath { get; }
         Assembly PluginAssembly();
         void Configure(IApplicationBuilder appBuilder);
         void ConfigureServices(IServiceCollection services);
