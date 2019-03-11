@@ -4,8 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Castle.Core.Internal;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microting.eFormApi.BasePn.Abstractions;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 using Microting.eFormApi.BasePn.Infrastructure.Delegates;
 
 namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
@@ -34,15 +36,23 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
             // Update values
             await UpdateConfig(dictionary, dbContext);
             // Reload configuration from database
-            ReloadDbConfigurationDelegates.ReloadDbConfigurationDelegate.Invoke();
+            if (ReloadDbConfigurationDelegates.ReloadDbConfigurationDelegate != null)
+            {
+                var invocationList = ReloadDbConfigurationDelegates.ReloadDbConfigurationDelegate
+                    .GetInvocationList();
+                foreach (var func in invocationList)
+                {
+                    func.DynamicInvoke();
+                }
+            }
         }
 
         private static async Task UpdateConfig(Dictionary<string, string> dictionary, IPluginDbContext dbContext)
         {
             var keys = dictionary.Select(x => x.Key).ToArray();
-            var configs = dbContext.PluginConfigurationValues
+            var configs = await dbContext.PluginConfigurationValues
                 .Where(x => keys.Contains(x.Id))
-                .ToList();
+                .ToListAsync();
 
             foreach (var configElement in dictionary)
             {
@@ -50,6 +60,18 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
                     .FirstOrDefault(x => x.Id == configElement.Key);
                 if (config != null && config.Value != configElement.Value)
                 {
+                    // Add version
+                    var currentVersion = await dbContext.PluginConfigurationVersions
+                        .FirstOrDefaultAsync(x => x.Id == config.Id && x.Value == config.Value);
+
+                    var version = currentVersion == null ? 1 : currentVersion.Version++;
+                    var newConfigVersion = new PluginConfigurationVersion()
+                    {
+                        Id = config.Id,
+                        Value = config.Value,
+                        Version = version,
+                    };
+                    await dbContext.PluginConfigurationVersions.AddAsync(newConfigVersion);
                     config.Value = configElement.Value;
                     dbContext.PluginConfigurationValues.Update(config);
                 }

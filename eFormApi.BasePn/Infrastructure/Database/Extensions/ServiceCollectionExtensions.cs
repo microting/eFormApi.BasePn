@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Microting.eFormApi.BasePn.Infrastructure.Delegates;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions;
 
 namespace Microting.eFormApi.BasePn.Infrastructure.Database.Extensions
@@ -10,8 +9,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Extensions
     {
         public static void ConfigurePluginDbOptions<T>(
             this IServiceCollection services,
-            IConfigurationSection section,
-            ReloadDbConfiguration reloadDelegate) where T : class, new()
+            IConfigurationSection section) where T : class, new()
         {
             services.Configure<T>(section);
             services.AddTransient<IPluginDbOptions<T>>(provider =>
