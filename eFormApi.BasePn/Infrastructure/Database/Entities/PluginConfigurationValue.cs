@@ -2,10 +2,10 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
 {
-    public class PluginConfigurationValue : BaseEntity
+    public class PluginConfigurationValue 
     {
-        public string Name { get; set; }
+        public string Id { get; set; }
         
-        public string Value { get; set; }               
+        public string Value { get; set; }
     }
 }
