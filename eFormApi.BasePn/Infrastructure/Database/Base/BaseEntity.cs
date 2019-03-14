@@ -8,7 +8,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Base
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int Id { get; set; }        
         
         public DateTime CreatedAt { get; set; }
         
@@ -20,5 +20,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Base
         public int CreatedByUserId { get; set; }
         
         public int UpdatedByUserId { get; set; }
+        
+        public int Version { get; set; }
     }
 }
