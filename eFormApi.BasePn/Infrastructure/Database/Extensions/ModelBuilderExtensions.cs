@@ -35,19 +35,10 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Extensions
         public static void AddPluginSettingsRules(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PluginConfigurationValue>()
-                .HasKey(value => value.Id);
-
-            modelBuilder.Entity<PluginConfigurationValue>()
-                .HasIndex(value => value.Id)
+                .HasIndex(value => value.Name)
                 .IsUnique();
 
-            modelBuilder.Entity<PluginConfigurationVersion>()
-                .HasKey(value => value.Id);
-
-            modelBuilder.Entity<PluginConfigurationVersion>()
-                .HasIndex(value => value.Id);
-
-            modelBuilder.Entity<PluginConfigurationVersion>()
+            modelBuilder.Entity<PluginConfigurationValueVersion>()
                 .HasIndex(value => new {value.Id, value.Version})
                 .IsUnique();
         }
