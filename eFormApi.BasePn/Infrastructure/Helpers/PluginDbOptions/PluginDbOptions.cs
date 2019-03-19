@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 using Microting.eFormApi.BasePn.Infrastructure.Delegates;
+using Constants = eFormShared.Constants;
 
 namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
 {
@@ -28,13 +29,14 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
 
         public async Task UpdateDb(
             Action<T> applyChanges,
-            IPluginDbContext dbContext)
+            IPluginDbContext dbContext,
+            int userId)
         {
             var sectionObject = _options.CurrentValue;
             applyChanges(sectionObject);
             var dictionary = GetList(sectionObject, "");
             // Update values
-            await UpdateConfig(dictionary, dbContext);
+            await UpdateConfig(dictionary, dbContext, userId);
             // Reload configuration from database
             if (ReloadDbConfigurationDelegates.ReloadDbConfigurationDelegate != null)
             {
@@ -47,32 +49,38 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
             }
         }
 
-        private static async Task UpdateConfig(Dictionary<string, string> dictionary, IPluginDbContext dbContext)
+        private static async Task UpdateConfig(Dictionary<string, string> dictionary, IPluginDbContext dbContext, int userId)
         {
             var keys = dictionary.Select(x => x.Key).ToArray();
             var configs = await dbContext.PluginConfigurationValues
-                .Where(x => keys.Contains(x.Id))
+                .Where(x => keys.Contains(x.Name))
                 .ToListAsync();
 
             foreach (var configElement in dictionary)
             {
                 var config = configs
-                    .FirstOrDefault(x => x.Id == configElement.Key);
+                    .FirstOrDefault(x => x.Name == configElement.Key);
                 if (config != null && config.Value != configElement.Value)
                 {
                     // Add version
-                    var currentVersion = await dbContext.PluginConfigurationVersions
-                        .FirstOrDefaultAsync(x => x.Id == config.Id && x.Value == config.Value);
-
-                    var version = currentVersion == null ? 1 : currentVersion.Version++;
-                    var newConfigVersion = new PluginConfigurationVersion()
+                    var currentVersion = config.Version;
+                    var version = currentVersion + 1;
+                    var newConfigVersion = new PluginConfigurationValueVersion()
                     {
-                        Id = config.Id,
+                        Name = config.Name,
                         Value = config.Value,
-                        Version = version,
+                        Version = currentVersion,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow,
+                        WorkflowState = Constants.WorkflowStates.Created,
+                        CreatedByUserId = userId,
+                        UpdatedByUserId = userId,
                     };
-                    await dbContext.PluginConfigurationVersions.AddAsync(newConfigVersion);
+                    await dbContext.PluginConfigurationValueVersions.AddAsync(newConfigVersion);
                     config.Value = configElement.Value;
+                    config.Version = version;
+                    config.UpdatedAt = DateTime.UtcNow;
+                    config.UpdatedByUserId = userId;
                     dbContext.PluginConfigurationValues.Update(config);
                 }
             }

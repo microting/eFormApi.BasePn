@@ -9,6 +9,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
     {
         Task UpdateDb(
             Action<T> applyChanges,
-            IPluginDbContext dbContext);
+            IPluginDbContext dbContext,
+            int userId);
     }
 }
