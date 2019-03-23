@@ -44,7 +44,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Settings
             if (_connectionString.IsNullOrEmpty() || _connectionString == "...")
             {
                 Data = seedData.ToDictionary(
-                    item => item.Id,
+                    item => item.Name,
                     item => item.Value);
             }
             else
@@ -54,12 +54,12 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Settings
                     dbContext.Database.Migrate();
                     Data = dbContext.PluginConfigurationValues
                         .AsNoTracking()
-                        .ToDictionary(c => c.Id, c => c.Value);
+                        .ToDictionary(c => c.Name, c => c.Value);
 
                     if (!Data.Any())
                     {
                         Data = seedData.ToDictionary(
-                            item => item.Id,
+                            item => item.Name,
                             item => item.Value);
                     }
                 }
