@@ -5,16 +5,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microting.eFormApi.BasePn.Abstractions;
+using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
 using Rebus.Bus;
 
 namespace Microting.eFormApi.BasePn.Services
 {
-  public class EFormCoreService : IEFormCoreService
+    public class EFormCoreService : IEFormCoreService
     {
         private readonly IOptions<ConnectionStringsSdk> _connectionStrings;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private Core _core;
         private readonly ILogger<EFormCoreService> _logger;
         public IBus Bus { get; set; }
 
@@ -30,6 +30,8 @@ namespace Microting.eFormApi.BasePn.Services
         public Core GetCore()
         {
             string connectionString = _connectionStrings.Value.SdkConnection;
+
+            // Update values
             if (string.IsNullOrEmpty(connectionString))
             {
                 _httpContextAccessor.HttpContext.Response.OnStarting(async () =>
@@ -39,30 +41,11 @@ namespace Microting.eFormApi.BasePn.Services
                 });
             }
 
-            _core = new Core();
             string connectionStr = _connectionStrings.Value.SdkConnection;
-            bool running;
 
-            try
-            {
-                running = _core.StartSqlOnly(connectionStr);
-            }
-            catch (Exception exception)
-            {
-                _logger.LogError(exception.Message);
-                var adminTools = new AdminTools(connectionStr);
-                adminTools.MigrateDb();
-                adminTools.DbSettingsReloadRemote();
-                running = _core.StartSqlOnly(connectionStr);
-            }
+            Core coreInstance = CoreSingleton.GetCoreInstance(connectionStr, _logger);
 
-            if (running)
-            {
-                return _core;
-            }
-
-            _logger.LogError("Core is not running");
-            throw new Exception("Core is not running");
+            return coreInstance;
         }
     }
 }
