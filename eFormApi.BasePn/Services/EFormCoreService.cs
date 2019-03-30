@@ -11,7 +11,7 @@ using Rebus.Bus;
 
 namespace Microting.eFormApi.BasePn.Services
 {
-  public class EFormCoreService : IEFormCoreService
+    public class EFormCoreService : IEFormCoreService
     {
         private readonly IOptions<ConnectionStringsSdk> _connectionStrings;
         private readonly IHttpContextAccessor _httpContextAccessor;
