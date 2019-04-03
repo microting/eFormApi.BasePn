@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
 
@@ -28,6 +29,10 @@ namespace Microting.eFormApi.BasePn
             services.AddScoped<IEformPlugin, EformBasePlugin>();
         }
 
+        public void ConfigureOptionsServices(IServiceCollection services, IConfiguration configuration)
+        {
+        }
+
         public void ConfigureDbContext(IServiceCollection services, string connectionString)
         {
         }
@@ -39,6 +44,12 @@ namespace Microting.eFormApi.BasePn
         }
 
         public void SeedDatabase(string connectionString)
+        {
+        }
+
+        public void AddPluginConfig(
+            IConfigurationBuilder builder,
+            string connectionString)
         {
         }
     }

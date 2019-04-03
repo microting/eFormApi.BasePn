@@ -16,7 +16,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Extensions
             modelBuilder.Entity<IdentityUserClaim<int>>(i => { i.ToTable("UserClaims"); });
             modelBuilder.Entity<IdentityUserToken<int>>(i => { i.ToTable("UserTokens"); });
 
-
             modelBuilder.Entity<EformUserRole>(userRole =>
             {
                 userRole.HasKey(ur => new {ur.UserId, ur.RoleId});
@@ -31,6 +30,10 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Extensions
                     .HasForeignKey(ur => ur.UserId)
                     .IsRequired();
             });
+        }
+
+        public static void AddPluginSettingsRules(this ModelBuilder modelBuilder)
+        {
         }
     }
 }
