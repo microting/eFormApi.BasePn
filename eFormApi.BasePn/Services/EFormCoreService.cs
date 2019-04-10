@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using eFormCore;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,42 @@ namespace Microting.eFormApi.BasePn.Services
             Core coreInstance = CoreSingleton.GetCoreInstance(connectionStr, _logger);
 
             return coreInstance;
+        }
+        
+        public void LogEvent(string appendText)
+        {
+            try
+            {                
+                var oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine($"[DBG] {GetMethodName()}: {appendText}");
+                Console.ForegroundColor = oldColor;
+            }
+            catch
+            {
+            }
+        }
+
+        public void LogException(string appendText)
+        {
+            try
+            {
+                var oldColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"[ERR] {GetMethodName()}: {appendText}");
+                Console.ForegroundColor = oldColor;
+            }
+            catch
+            {
+            }
+        }
+        
+        private string GetMethodName()
+        {
+            StackTrace st = new StackTrace();
+            StackFrame sf = st.GetFrame(2);
+
+            return sf.GetMethod().ReflectedType.Name + "." + sf.GetMethod().Name;
         }
     }
 }
