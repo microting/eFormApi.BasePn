@@ -6,6 +6,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
     {
         public string Name { get; set; }
         
-        public string Value { get; set; }               
+        public string Value { get; set; }
     }
 }

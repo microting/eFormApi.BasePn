@@ -21,7 +21,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Base
         public int CreatedByUserId { get; set; }
 
         public int UpdatedByUserId { get; set; }
-        
+
         public int Version { get; set; }
     }
 }
