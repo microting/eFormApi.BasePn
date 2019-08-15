@@ -1,15 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Castle.Core.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 using Microting.eFormApi.BasePn.Infrastructure.Delegates;
-using Constants = eFormShared.Constants;
 
 namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
 {
@@ -92,7 +91,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
         {
             var dictionary = new Dictionary<string, string>();
             var sectionName = currentObject.GetType().Name;
-            prefix = prefix.IsNullOrEmpty()
+            prefix = string.IsNullOrEmpty(prefix)
                 ? $"{sectionName}"
                 : $"{prefix}:{sectionName}";
 

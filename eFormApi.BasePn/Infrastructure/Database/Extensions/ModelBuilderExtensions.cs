@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 
@@ -34,13 +34,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Extensions
 
         public static void AddPluginSettingsRules(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PluginConfigurationValue>()
-                .HasIndex(value => value.Name)
-                .IsUnique();
-
-            modelBuilder.Entity<PluginConfigurationValueVersion>()
-                .HasIndex(value => new {value.Id, value.Version})
-                .IsUnique();
         }
     }
 }
