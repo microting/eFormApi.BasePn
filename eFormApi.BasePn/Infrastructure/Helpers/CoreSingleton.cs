@@ -33,7 +33,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
                 {
                     logger.LogError(exception.Message);
                     var adminTools = new AdminTools(connectionString);
-                    adminTools.MigrateDb();
+//                    adminTools.MigrateDb();
                     adminTools.DbSettingsReloadRemote();
                     isCoreRunning = _coreInstance.StartSqlOnly(connectionString);
                 }
