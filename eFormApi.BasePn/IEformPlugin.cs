@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,11 +8,14 @@ using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
 
 namespace Microting.eFormApi.BasePn
 {
+    using System.Threading.Tasks;
+
     public interface IEformPlugin
     {
         string Name { get; }
         string PluginId { get; }
         string PluginPath { get; }
+        string PluginBaseUrl { get; }
         Assembly PluginAssembly();
         void Configure(IApplicationBuilder appBuilder);
         void ConfigureServices(IServiceCollection services);
@@ -25,5 +29,9 @@ namespace Microting.eFormApi.BasePn
         void AddPluginConfig(
             IConfigurationBuilder builder,
             string connectionString);
+
+        Task<ICollection<PluginPermissionModel>> GetPluginPermissions();
+        Task<ICollection<PluginGroupPermissionModel>> GetPluginGroupPermissions(int? groupId = null);
+        void SetPluginGroupPermissions(ICollection<PluginGroupPermissionModel> permissions);
     }
 }
