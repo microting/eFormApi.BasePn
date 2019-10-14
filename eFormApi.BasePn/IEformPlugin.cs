@@ -9,6 +9,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
 namespace Microting.eFormApi.BasePn
 {
     using System.Threading.Tasks;
+    using Infrastructure.Helpers;
 
     public interface IEformPlugin
     {
@@ -30,8 +31,6 @@ namespace Microting.eFormApi.BasePn
             IConfigurationBuilder builder,
             string connectionString);
 
-        Task<ICollection<PluginPermissionModel>> GetPluginPermissions();
-        Task<ICollection<PluginGroupPermissionModel>> GetPluginGroupPermissions(int? groupId = null);
-        void SetPluginGroupPermissions(ICollection<PluginGroupPermissionModel> permissions);
+        PluginPermissionsHelper GetPermissionsHelper(string connectionString);
     }
 }
