@@ -8,11 +8,11 @@
     using Microsoft.EntityFrameworkCore;
     using Models.Application;
 
-    public class PluginPermissionsHelper
+    public class PluginPermissionsManager
     {
         private readonly IPluginDbContext _dbContext;
 
-        public PluginPermissionsHelper(IPluginDbContext dbContext)
+        public PluginPermissionsManager(IPluginDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -22,7 +22,8 @@
             return await _dbContext.PluginPermissions.Select(p => new PluginPermissionModel()
             {
                 PermissionId = p.Id,
-                Name = p.Name
+                PermissionName = p.PermissionName,
+                ClaimName = p.ClaimName
             }).ToListAsync();
         }
 
@@ -41,7 +42,8 @@
                 Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
                 {
                     PermissionId = p.Id,
-                    Name = p.Name,
+                    PermissionName = p.PermissionName,
+                    ClaimName = p.ClaimName,
                     IsEnabled = g.Any(gp => gp.PermissionId == p.Id)
                 }).ToList()
             }).ToListAsync();
@@ -49,12 +51,11 @@
 
         public async Task SetPluginGroupPermissions(ICollection<PluginGroupPermissionsListModel> groupPermissions)
         {
-            var permissionsToDelete = await _dbContext.PluginGroupPermissions
+            var permissionsToDelete = _dbContext.PluginGroupPermissions
                 .Where(p => groupPermissions
                     .Where(m => m.GroupId == p.GroupId)
                     .Any(m => m.Permissions
-                        .Any(mp => !mp.IsEnabled && p.PermissionId == mp.PermissionId)))
-                .ToListAsync();
+                        .Any(mp => !mp.IsEnabled && p.PermissionId == mp.PermissionId)));
 
             foreach (var permission in permissionsToDelete)
             {
@@ -64,7 +65,10 @@
             foreach (var groupPermissionModel in groupPermissions)
             {
                 var permissionsToAdd = groupPermissionModel.Permissions
-                    .Where(mp => mp.IsEnabled && _dbContext.PluginGroupPermissions.All(p => p.PermissionId != mp.PermissionId));
+                    .Where(mp => mp.IsEnabled 
+                                 && !_dbContext.PluginGroupPermissions.Any(p => 
+                                         p.PermissionId == mp.PermissionId 
+                                         && p.GroupId == groupPermissionModel.GroupId));
 
                 foreach (var model in permissionsToAdd)
                 {

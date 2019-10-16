@@ -31,6 +31,6 @@ namespace Microting.eFormApi.BasePn
             IConfigurationBuilder builder,
             string connectionString);
 
-        PluginPermissionsHelper GetPermissionsHelper(string connectionString);
+        PluginPermissionsManager GetPermissionsManager(string connectionString);
     }
 }

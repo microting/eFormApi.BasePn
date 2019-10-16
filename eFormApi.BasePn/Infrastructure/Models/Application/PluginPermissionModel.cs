@@ -2,7 +2,8 @@
 {
     public class PluginPermissionModel
     {
-        public string Name { get; set; }
+        public string PermissionName { get; set; }
+        public string ClaimName { get; set; }
         public int PermissionId { get; set; }
     }
 }
