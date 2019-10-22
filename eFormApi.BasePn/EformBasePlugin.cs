@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
+using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 
 namespace Microting.eFormApi.BasePn
 {
@@ -14,6 +15,8 @@ namespace Microting.eFormApi.BasePn
         public string PluginId => "EformBasePlugin";
 
         public string PluginPath => PluginAssembly().Location;
+
+        public string PluginBaseUrl => "EformBasePlugin";
 
         public Assembly PluginAssembly()
         {
@@ -51,6 +54,11 @@ namespace Microting.eFormApi.BasePn
             IConfigurationBuilder builder,
             string connectionString)
         {
+        }
+
+        public PluginPermissionsManager GetPermissionsManager(string connectionString)
+        {
+            return null;
         }
     }
 }
