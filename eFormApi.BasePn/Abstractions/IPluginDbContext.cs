@@ -18,5 +18,6 @@ namespace Microting.eFormApi.BasePn.Abstractions
         DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }
         DbSet<PluginPermission> PluginPermissions { get; set; }
         DbSet<PluginGroupPermission> PluginGroupPermissions { get; set; }
+        DbSet<PluginGroupPermissionVersion> PluginGroupPermissionVersions { get; set; }
     }
 }

@@ -7,6 +7,7 @@
     using Database.Entities;
     using Microsoft.EntityFrameworkCore;
     using Models.Application;
+    using Microting.eForm.Infrastructure.Constants;
 
     public class PluginPermissionsManager
     {
@@ -44,43 +45,38 @@
                     PermissionId = p.Id,
                     PermissionName = p.PermissionName,
                     ClaimName = p.ClaimName,
-                    IsEnabled = g.Any(gp => gp.PermissionId == p.Id)
+                    IsEnabled = g.Any(gp => gp.PermissionId == p.Id && gp.IsEnabled)
                 }).ToList()
             }).ToListAsync();
         }
 
         public async Task SetPluginGroupPermissions(ICollection<PluginGroupPermissionsListModel> groupPermissions)
         {
-            var permissionsToDelete = _dbContext.PluginGroupPermissions
-                .Where(p => groupPermissions
-                    .Where(m => m.GroupId == p.GroupId)
-                    .Any(m => m.Permissions
-                        .Any(mp => !mp.IsEnabled && p.PermissionId == mp.PermissionId)));
-
-            foreach (var permission in permissionsToDelete)
-            {
-                _dbContext.PluginGroupPermissions.Remove(permission);
-            }
-
             foreach (var groupPermissionModel in groupPermissions)
             {
-                var permissionsToAdd = groupPermissionModel.Permissions
-                    .Where(mp => mp.IsEnabled 
-                                 && !_dbContext.PluginGroupPermissions.Any(p => 
-                                         p.PermissionId == mp.PermissionId 
-                                         && p.GroupId == groupPermissionModel.GroupId));
-
-                foreach (var model in permissionsToAdd)
+                foreach (var permissionModel in groupPermissionModel.Permissions)
                 {
-                    _dbContext.PluginGroupPermissions.Add(new PluginGroupPermission
+                    var pluginGroupPermission = await _dbContext.PluginGroupPermissions
+                        .FirstOrDefaultAsync(pgp => pgp.GroupId == groupPermissionModel.GroupId 
+                            && pgp.PermissionId == permissionModel.PermissionId
+                            && pgp.WorkflowState != Constants.WorkflowStates.Removed);
+
+                    if (pluginGroupPermission != null)
                     {
-                        PermissionId = model.PermissionId,
-                        GroupId = groupPermissionModel.GroupId
-                    });
+                        pluginGroupPermission.Update(_dbContext);
+                    } 
+                    else
+                    {
+                        pluginGroupPermission = new PluginGroupPermission
+                        {
+                            GroupId = groupPermissionModel.GroupId,
+                            PermissionId = permissionModel.PermissionId,
+                            IsEnabled = permissionModel.IsEnabled
+                        };
+                        pluginGroupPermission.Create(_dbContext);
+                    }
                 }
             }
-
-            await _dbContext.SaveChangesAsync();
         }
     }
 }
