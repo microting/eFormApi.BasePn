@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net;
+using System.Threading.Tasks;
 using eFormCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -28,7 +29,7 @@ namespace Microting.eFormApi.BasePn.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public Core GetCore()
+        public async Task<Core> GetCore()
         {
             string connectionString = _connectionStrings.Value.SdkConnection;
 
@@ -44,7 +45,7 @@ namespace Microting.eFormApi.BasePn.Services
 
             string connectionStr = _connectionStrings.Value.SdkConnection;
 
-            Core coreInstance = CoreSingleton.GetCoreInstance(connectionStr, _logger);
+            Core coreInstance = await CoreSingleton.GetCoreInstance(connectionStr, _logger);
 
             return coreInstance;
         }
