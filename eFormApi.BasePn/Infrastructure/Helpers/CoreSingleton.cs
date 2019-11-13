@@ -32,9 +32,8 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
 
                 catch (Exception exception)
                 {
-                    logger.LogError(exception.Message);
+                    Log.LogException($"CoreSingleton.GetCoreInstance: Got exception {exception.Message}");
                     var adminTools = new AdminTools(connectionString);
-//                    adminTools.MigrateDb();
                     adminTools.DbSettingsReloadRemote().RunSynchronously();
                     isCoreRunning = _coreInstance.StartSqlOnly(connectionString).Result;
                 }

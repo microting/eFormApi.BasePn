@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using eFormCore;
 using Microsoft.AspNetCore.Http;
@@ -46,6 +47,11 @@ namespace Microting.eFormApi.BasePn.Services
             string connectionStr = _connectionStrings.Value.SdkConnection;
 
             Core coreInstance = await CoreSingleton.GetCoreInstance(connectionStr, _logger);
+            while (!coreInstance.Running())
+            {
+                Thread.Sleep(1000);
+                Log.LogEvent("EFormCoreService.GetCore: sleeping for 1 second, waiting for core to startup!");
+            }
 
             return coreInstance;
         }
