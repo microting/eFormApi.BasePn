@@ -25,7 +25,7 @@
                 PermissionId = p.Id,
                 PermissionName = p.PermissionName,
                 ClaimName = p.ClaimName
-            }).ToListAsync();
+            }).OrderBy(x => x.ClaimName).ToListAsync();
         }
 
         public async Task<ICollection<PluginGroupPermissionsListModel>> GetPluginGroupPermissions(int? groupId = null)
@@ -46,7 +46,7 @@
                     PermissionName = p.PermissionName,
                     ClaimName = p.ClaimName,
                     IsEnabled = g.Any(gp => gp.PermissionId == p.Id && gp.IsEnabled)
-                }).ToList()
+                }).OrderBy(x => x.ClaimName).ToList()
             }).ToListAsync();
         }
 
