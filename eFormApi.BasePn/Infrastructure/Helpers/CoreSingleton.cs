@@ -19,6 +19,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
         public static async Task<Core> GetCoreInstance(string connectionString, ILogger<EFormCoreService> logger)
         {   
             if (_coreInstance != null && connectionString.Equals(_connectionString)) return _coreInstance;
+            await Task.Run(() => { });
 
             lock (LockObj)
             {
