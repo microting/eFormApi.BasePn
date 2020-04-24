@@ -16,5 +16,11 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
         public string GoogleAuthenticatorSecretKey { get; set; }
 
         public virtual ICollection<EformUserRole> UserRoles { get; set; }
+        
+        public bool DarkTheme { get; set; }
+        
+        public string TimeZone { get; set; }
+        
+        public string Formats { get; set; }
     }
 }
