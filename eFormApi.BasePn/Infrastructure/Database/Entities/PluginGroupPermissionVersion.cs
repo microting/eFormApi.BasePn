@@ -10,6 +10,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
         public virtual PluginPermission Permission { get; set; }
 
         public int PluginGroupPermissionId { get; set; }
-        public PluginGroupPermission PluginGroupPermission { get; set; }
+        public virtual PluginGroupPermission PluginGroupPermission { get; set; }
     }
 }

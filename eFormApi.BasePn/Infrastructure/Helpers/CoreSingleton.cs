@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using eFormCore;
 using Microsoft.Extensions.Logging;
 using Microting.eFormApi.BasePn.Services;
@@ -15,9 +16,10 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
         private static readonly object LockObj = new object();
         private static string _connectionString;
 
-        public static Core GetCoreInstance(string connectionString, ILogger<EFormCoreService> logger)
+        public static async Task<Core> GetCoreInstance(string connectionString, ILogger<EFormCoreService> logger)
         {   
             if (_coreInstance != null && connectionString.Equals(_connectionString)) return _coreInstance;
+            await Task.Run(() => { });
 
             lock (LockObj)
             {
@@ -26,16 +28,15 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
 
                 try
                 {
-                    isCoreRunning = _coreInstance.StartSqlOnly(connectionString);
+                    isCoreRunning = _coreInstance.StartSqlOnly(connectionString).Result;
                 }
 
                 catch (Exception exception)
                 {
-                    logger.LogError(exception.Message);
+                    Log.LogException($"CoreSingleton.GetCoreInstance: Got exception {exception.Message}");
                     var adminTools = new AdminTools(connectionString);
-                    adminTools.MigrateDb();
-                    adminTools.DbSettingsReloadRemote();
-                    isCoreRunning = _coreInstance.StartSqlOnly(connectionString);
+                    var result = adminTools.DbSettingsReloadRemote().Result;
+                    isCoreRunning = _coreInstance.StartSqlOnly(connectionString).Result;
                 }
 
                 if (isCoreRunning)
