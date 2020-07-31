@@ -21,11 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.CasePosts
 {
-    public class ConnectionStrings
+    public class CasePostsRequestCommonModel
     {
-        public string DefaultConnection { get; set; }
+        public int? CaseId { get; set; }
+        public int? TemplateId { get; set; }
+        public int PageSize { get; set; }
+        public int Offset { get; set; }
     }
 }
