@@ -1,7 +1,7 @@
 ﻿/*
 The MIT License (MIT)
 
-Copyright (c) 2007 - 2020 Microting A/S
+Copyright (c) 2007 - 2019 Microting A/S
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,11 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
+namespace Microting.eFormApi.BasePn.Abstractions
 {
-    public class ConnectionStrings
+    using System.Threading.Tasks;
+    using Infrastructure.Models.API;
+    using Infrastructure.Models.Application.CasePosts;
+
+    public interface ICasePostBaseService
     {
-        public string DefaultConnection { get; set; }
+        Task<OperationDataResult<CasePostsCommonModel>> GetCommonPosts(CasePostsRequestCommonModel requestModel);
     }
 }
