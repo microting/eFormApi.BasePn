@@ -9,13 +9,13 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.WritableOptions
 {
     public class WritableOptions<T> : IWritableOptions<T> where T : class, new()
     {
-        private readonly IHostingEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
         private readonly IOptionsMonitor<T> _options;
         private readonly string _section;
         private readonly string _file;
 
         public WritableOptions(
-            IHostingEnvironment environment,
+            IWebHostEnvironment environment,
             IOptionsMonitor<T> options,
             string section,
             string file)
