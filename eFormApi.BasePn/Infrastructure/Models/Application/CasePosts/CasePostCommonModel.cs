@@ -28,7 +28,8 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.CasePosts
 
     public class CasePostCommonModel
     {
-        public int Id { get; set; }
+        public int PostId { get; set; }
+        public int CaseId { get; set; }
         public List<string> ToRecipients { get; set; }
         public List<string> ToRecipientsTags { get; set; }
         public DateTime? PostDate { get; set; }
