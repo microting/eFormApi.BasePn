@@ -14,6 +14,7 @@
         Task<EformUser> GetByUsernameAsync(string username);
         Task<EformUser> GetCurrentUserAsync();
         Task<TimeZoneInfo> GetUserTimeZoneInfo();
+        Task<TimeZoneInfo> GetUserTimeZoneInfo(string userId);
         Task AddPasswordAsync(EformUser user, string password);
         Task AddToRoleAsync(EformUser user, string role);
     }
