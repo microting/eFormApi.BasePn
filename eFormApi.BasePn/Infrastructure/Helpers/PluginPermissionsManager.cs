@@ -37,17 +37,22 @@
                 query = query.Where(p => p.GroupId == groupId);
             }
 
-            return await query.GroupBy(p => p.GroupId).Select(g => new PluginGroupPermissionsListModel()
+            if (query.Any())
             {
-                GroupId = g.Key,
-                Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
+                return query.Select(g => new PluginGroupPermissionsListModel()
                 {
-                    PermissionId = p.Id,
-                    PermissionName = p.PermissionName,
-                    ClaimName = p.ClaimName,
-                    IsEnabled = g.Any(gp => gp.PermissionId == p.Id && gp.IsEnabled)
-                }).OrderBy(x => x.ClaimName).ToList()
-            }).ToListAsync();
+                    GroupId = g.GroupId,
+                    Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
+                    {
+                        PermissionId = p.Id,
+                        PermissionName = p.PermissionName,
+                        ClaimName = p.ClaimName,
+                        IsEnabled = g.IsEnabled && g.PermissionId == p.Id
+                    }).OrderBy(x => x.ClaimName).ToList()
+                }).ToList();
+            }
+
+            return new List<PluginGroupPermissionsListModel>();
         }
 
         public async Task SetPluginGroupPermissions(ICollection<PluginGroupPermissionsListModel> groupPermissions)
