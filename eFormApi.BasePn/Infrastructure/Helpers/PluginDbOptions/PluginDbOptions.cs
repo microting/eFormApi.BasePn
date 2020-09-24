@@ -107,11 +107,19 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
             {
                 if (property.MemberType == MemberTypes.Property)
                 {
-                    var value = property.GetValue(currentObject, null);
-                    var type = value.GetType();
-                    if (types.Contains(type))
+                    try
                     {
-                        dictionary.Add($"{prefix}:{property.Name}", value.ToString());
+                        var value = property.GetValue(currentObject, null);
+                        var type = value.GetType();
+                        if (types.Contains(type))
+                        {
+                            dictionary.Add($"{prefix}:{property.Name}", value.ToString());
+                        }
+                    }
+                    catch (NullReferenceException exception)
+                    {
+                        Console.WriteLine($"{property.Name} was not found in the PluginConfigurationValues table, are you missing a seed for it?");
+                        throw new NullReferenceException($"{property.Name} was not found in the PluginConfigurationValues table, are you missing a seed for it?");
                     }
                 }
             }
