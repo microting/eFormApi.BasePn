@@ -39,7 +39,7 @@
 
             if (query.Any())
             {
-                return query.Select(g => new PluginGroupPermissionsListModel()
+                return query.ToList().Select(g => new PluginGroupPermissionsListModel()
                 {
                     GroupId = g.GroupId,
                     Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
