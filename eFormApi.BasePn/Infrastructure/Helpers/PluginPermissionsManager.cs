@@ -39,17 +39,24 @@
 
             if (query.Any())
             {
-                return query.ToList().Select(g => new PluginGroupPermissionsListModel()
+                var pluginGroupPermissionsListModels = new List<PluginGroupPermissionsListModel>();
+                foreach (var pluginGroupPermission in query.Select(x => x.GroupId).Distinct().ToList())
                 {
-                    GroupId = g.GroupId,
-                    Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
+                    PluginGroupPermissionsListModel pluginGroupPermissionsListModel = new PluginGroupPermissionsListModel()
                     {
-                        PermissionId = p.Id,
-                        PermissionName = p.PermissionName,
-                        ClaimName = p.ClaimName,
-                        IsEnabled = g.IsEnabled && g.PermissionId == p.Id
-                    }).OrderBy(x => x.ClaimName).ToList()
-                }).ToList();
+                        GroupId = pluginGroupPermission,
+                        Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
+                        {
+                            PermissionId = p.Id,
+                            PermissionName = p.PermissionName,
+                            ClaimName = p.ClaimName,
+                            IsEnabled = query.SingleOrDefault(x =>
+                                x.PermissionId == p.Id && x.GroupId == pluginGroupPermission).IsEnabled
+                        }).OrderBy(x => x.ClaimName).ToList()
+                    };
+                    pluginGroupPermissionsListModels.Add(pluginGroupPermissionsListModel);
+                }
+                return pluginGroupPermissionsListModels;
             }
 
             return new List<PluginGroupPermissionsListModel>();
@@ -68,6 +75,7 @@
 
                     if (pluginGroupPermission != null)
                     {
+                        pluginGroupPermission.IsEnabled = permissionModel.IsEnabled;
                         pluginGroupPermission.Update(_dbContext);
                     } 
                     else
