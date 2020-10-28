@@ -10,6 +10,7 @@ namespace Microting.eFormApi.BasePn
 {
     using System.Threading.Tasks;
     using Infrastructure.Helpers;
+    using Microting.eFormApi.BasePn.Infrastructure.Models.Application.NavigationMenu;
 
     public interface IEformPlugin
     {
@@ -26,6 +27,7 @@ namespace Microting.eFormApi.BasePn
 
         void ConfigureDbContext(IServiceCollection services, string connectionString);
         MenuModel HeaderMenu(IServiceProvider serviceProvider);
+        List<PluginMenuItemModel> GetNavigationMenu(IServiceProvider serviceProvider);
         void SeedDatabase(string connectionString);
         void AddPluginConfig(
             IConfigurationBuilder builder,
