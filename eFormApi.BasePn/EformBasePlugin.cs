@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application;
 using Microting.eFormApi.BasePn.Infrastructure.Helpers;
+using System.Collections.Generic;
+using Microting.eFormApi.BasePn.Infrastructure.Models.Application.NavigationMenu;
 
 namespace Microting.eFormApi.BasePn
 {
@@ -43,6 +45,12 @@ namespace Microting.eFormApi.BasePn
         public MenuModel HeaderMenu(IServiceProvider serviceProvider)
         {
             var result = new MenuModel();
+            return result;
+        }
+
+        public List<PluginMenuItemModel> GetNavigationMenu(IServiceProvider serviceProvider)
+        {
+            var result = new List<PluginMenuItemModel>();
             return result;
         }
 
