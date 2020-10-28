@@ -23,7 +23,6 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-    - name: Version number
-      run: export GITVERSION=`git describe --abbrev=0 --tags | cut -d "v" -f 2`
-    - name: Echo
-      run: echo $GITVERSION
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@master"
