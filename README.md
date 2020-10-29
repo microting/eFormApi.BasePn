@@ -1,5 +1,5 @@
 # eFormApi.BasePn
-Build status
+
 ![.NET Core](https://github.com/microting/eFormApi.BasePn/workflows/.NET%20Core/badge.svg)
 
 ## NOTICE! this is not a standalone project and needs to be used with eForm Angular Frontend.
