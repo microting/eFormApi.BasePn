@@ -4,6 +4,7 @@
 
     public class PluginMenuItemModel
     {
+        public string E2EId { get; set; }
         public string Link { get; set; }
         public string Name { get; set; }
         public MenuItemTypeEnum Type { get; set; }
