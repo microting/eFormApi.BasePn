@@ -10,7 +10,7 @@
 
         public List<PluginMenuTranslationModel> Translations
           = new List<PluginMenuTranslationModel>();
-        public List<PluginPermissionModel> Permissions { get; set; }
-           = new List<PluginPermissionModel>();
+        public List<PluginMenuTemplatePermissionModel> Permissions { get; set; }
+           = new List<PluginMenuTemplatePermissionModel>();
     }
 }
