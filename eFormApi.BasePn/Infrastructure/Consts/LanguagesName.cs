@@ -5,5 +5,6 @@
         public const string English = "English";
         public const string Danish = "Danish";
         public const string German = "German";
+        public const string Ukrainian = "Ukrainian";
     }
 }
