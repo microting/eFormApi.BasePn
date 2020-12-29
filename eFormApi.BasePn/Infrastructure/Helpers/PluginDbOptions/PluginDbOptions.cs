@@ -116,7 +116,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
                             dictionary.Add($"{prefix}:{property.Name}", value.ToString());
                         }
                     }
-                    catch (NullReferenceException exception)
+                    catch (NullReferenceException)
                     {
                         Console.WriteLine($"{property.Name} was not found in the PluginConfigurationValues table, are you missing a seed for it?");
                         throw new NullReferenceException($"{property.Name} was not found in the PluginConfigurationValues table, are you missing a seed for it?");

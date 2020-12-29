@@ -40,7 +40,8 @@
             if (query.Any())
             {
                 var pluginGroupPermissionsListModels = new List<PluginGroupPermissionsListModel>();
-                foreach (var pluginGroupPermission in query.Select(x => x.GroupId).Distinct().ToList())
+                var list = await query.Select(x => x.GroupId).Distinct().ToListAsync();
+                foreach (var pluginGroupPermission in list)
                 {
                     PluginGroupPermissionsListModel pluginGroupPermissionsListModel = new PluginGroupPermissionsListModel()
                     {
@@ -69,7 +70,7 @@
                 foreach (var permissionModel in groupPermissionModel.Permissions)
                 {
                     var pluginGroupPermission = await _dbContext.PluginGroupPermissions
-                        .FirstOrDefaultAsync(pgp => pgp.GroupId == groupPermissionModel.GroupId 
+                        .FirstOrDefaultAsync(pgp => pgp.GroupId == groupPermissionModel.GroupId
                             && pgp.PermissionId == permissionModel.PermissionId
                             && pgp.WorkflowState != Constants.WorkflowStates.Removed);
 
@@ -77,7 +78,7 @@
                     {
                         pluginGroupPermission.IsEnabled = permissionModel.IsEnabled;
                         pluginGroupPermission.Update(_dbContext);
-                    } 
+                    }
                     else
                     {
                         pluginGroupPermission = new PluginGroupPermission
