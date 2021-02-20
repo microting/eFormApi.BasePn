@@ -13,14 +13,12 @@ if (( "$GIT_STATUS" > 0 )); then
 	for PACKAGE_NAME in ${PACKAGES[@]}; do
 
 		OLD_VERSION=`dotnet list package | grep "$PACKAGE_NAME " | grep -oP ' \d\.\d+\.\d.*' | grep -oP ' \d.* \b' | xargs`
-		BOLD_VERSION=${OLD_VERSION//\./}
 
 		dotnet add $PROJECT_NAME package $PACKAGE_NAME
 
 		NEW_VERSION=`dotnet list package | grep "$PACKAGE_NAME " | grep -oP ' \d\.\d+\.\d.*$' | grep -oP '\d\.\d+\.\d.*$' | grep -oP ' \d\.\d+\.\d.*$' | xargs`
-		BNEW_VERSION=${NEW_VERSION//\./}
 
-		if (( $BNEW_VERSION > $BOLD_VERSION)); then
+		if [ $NEW_VERSION != $OLD_VERSION ]; then
 		  echo "We have a new version of $PACKAGE_NAME, so creating github issue and do a commit message to close that said issue"
 		  RESULT=`curl -X "POST" "https://api.github.com/repos/microting/$REPOSITORY/issues?state=all" \
 		     -H "Cookie: logged_in=no" \
