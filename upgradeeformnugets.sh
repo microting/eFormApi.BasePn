@@ -12,7 +12,7 @@ if (( "$GIT_STATUS" > 0 )); then
 
 	for PACKAGE_NAME in ${PACKAGES[@]}; do
 
-		OLD_VERSION=`dotnet list package | grep "$PACKAGE_NAME " | grep -oP ' \d\.\d+\.\d.*$' | grep -oP '\d\.\d+\.\d.*$' | grep -oP ' \d\.\d+\.\d.*$' | xargs`
+		OLD_VERSION=`dotnet list package | grep "$PACKAGE_NAME " | grep -oP ' \d\.\d+\.\d.*' | grep -oP ' \d.* \b' | xargs`
 		BOLD_VERSION=${OLD_VERSION//\./}
 
 		dotnet add $PROJECT_NAME package $PACKAGE_NAME
