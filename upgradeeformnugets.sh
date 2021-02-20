@@ -36,7 +36,7 @@ if (( "$GIT_STATUS" > 0 )); then
 		    "enhancement"
 		  ]
 		}'`
-		  ISSUE_NUMBER=`echo $RESULT | grep -oP 'number": \d..,' | grep -oP '\d..'`
+		  ISSUE_NUMBER=`echo $RESULT | grep -oP 'number": \d+,' | grep -oP '\d+'`
 		  git add .
 		  git commit -a -m "closes #$ISSUE_NUMBER"
 		fi
@@ -53,6 +53,7 @@ if (( "$GIT_STATUS" > 0 )); then
 		git tag "$NEW_GIT_VERSION"
 		git push --tags
 		git push
+		cd ..
 		github_changelog_generator -u microting -p $REPOSITORY -t $CHANGELOG_GITHUB_TOKEN
 		git add CHANGELOG.md
 		git commit -m "Updating changelog"
