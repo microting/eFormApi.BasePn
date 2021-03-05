@@ -37,17 +37,30 @@
                 query = query.Where(p => p.GroupId == groupId);
             }
 
-            return await query.GroupBy(p => p.GroupId).Select(g => new PluginGroupPermissionsListModel()
+            if (query.Any())
             {
-                GroupId = g.Key,
-                Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
+                var pluginGroupPermissionsListModels = new List<PluginGroupPermissionsListModel>();
+                var list = await query.Select(x => x.GroupId).Distinct().ToListAsync();
+                foreach (var pluginGroupPermission in list)
                 {
-                    PermissionId = p.Id,
-                    PermissionName = p.PermissionName,
-                    ClaimName = p.ClaimName,
-                    IsEnabled = g.Any(gp => gp.PermissionId == p.Id && gp.IsEnabled)
-                }).OrderBy(x => x.ClaimName).ToList()
-            }).ToListAsync();
+                    PluginGroupPermissionsListModel pluginGroupPermissionsListModel = new PluginGroupPermissionsListModel()
+                    {
+                        GroupId = pluginGroupPermission,
+                        Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
+                        {
+                            PermissionId = p.Id,
+                            PermissionName = p.PermissionName,
+                            ClaimName = p.ClaimName,
+                            IsEnabled = query.SingleOrDefault(x =>
+                                x.PermissionId == p.Id && x.GroupId == pluginGroupPermission).IsEnabled
+                        }).OrderBy(x => x.ClaimName).ToList()
+                    };
+                    pluginGroupPermissionsListModels.Add(pluginGroupPermissionsListModel);
+                }
+                return pluginGroupPermissionsListModels;
+            }
+
+            return new List<PluginGroupPermissionsListModel>();
         }
 
         public async Task SetPluginGroupPermissions(ICollection<PluginGroupPermissionsListModel> groupPermissions)
@@ -57,14 +70,15 @@
                 foreach (var permissionModel in groupPermissionModel.Permissions)
                 {
                     var pluginGroupPermission = await _dbContext.PluginGroupPermissions
-                        .FirstOrDefaultAsync(pgp => pgp.GroupId == groupPermissionModel.GroupId 
+                        .FirstOrDefaultAsync(pgp => pgp.GroupId == groupPermissionModel.GroupId
                             && pgp.PermissionId == permissionModel.PermissionId
                             && pgp.WorkflowState != Constants.WorkflowStates.Removed);
 
                     if (pluginGroupPermission != null)
                     {
+                        pluginGroupPermission.IsEnabled = permissionModel.IsEnabled;
                         pluginGroupPermission.Update(_dbContext);
-                    } 
+                    }
                     else
                     {
                         pluginGroupPermission = new PluginGroupPermission
