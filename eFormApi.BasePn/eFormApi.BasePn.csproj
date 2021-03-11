@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Microting.eFormApi.BasePn</RootNamespace>
     <AssemblyName>Microting.eFormApi.BasePn</AssemblyName>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,9 +12,15 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="3.1.8" />
-    <PackageReference Include="Microting.eForm" Version="4.4.2" />
+    <PackageReference Include="Microting.eForm" Version="4.4.6" />
     <PackageReference Include="OtpSharp.Core" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8" />
+  </ItemGroup>
+  <ItemGroup>
+      <None Include="images\icon.png">
+          <Pack>true</Pack>
+          <PackagePath>\</PackagePath>
+      </None>
   </ItemGroup>
 
 </Project>
