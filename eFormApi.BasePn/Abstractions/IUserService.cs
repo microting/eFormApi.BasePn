@@ -21,5 +21,6 @@
         Task<string> GetUserFormats(int userId);
         Task AddPasswordAsync(EformUser user, string password);
         Task AddToRoleAsync(EformUser user, string role);
+        Task<string> GetFullNameUserByUserIdAsync(int userId);
     }
 }
