@@ -1,5 +1,17 @@
 # Changelog
 
+## [v2.0.115](https://github.com/microting/eFormApi.BasePn/tree/v2.0.115) (2021-04-08)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.114...v2.0.115)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 4.4.22 to 4.4.23 [\#77](https://github.com/microting/eFormApi.BasePn/issues/77)
+
+**Merged pull requests:**
+
+- Add helper for add sort to query [\#76](https://github.com/microting/eFormApi.BasePn/pull/76) ([sanioooook](https://github.com/sanioooook))
+
 ## [v2.0.114](https://github.com/microting/eFormApi.BasePn/tree/v2.0.114) (2021-04-08)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.113...v2.0.114)
