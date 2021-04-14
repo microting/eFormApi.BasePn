@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.0.124](https://github.com/microting/eFormApi.BasePn/tree/v2.0.124) (2021-04-14)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.123...v2.0.124)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 4.4.32 to 4.4.33 [\#86](https://github.com/microting/eFormApi.BasePn/issues/86)
+
 ## [v2.0.123](https://github.com/microting/eFormApi.BasePn/tree/v2.0.123) (2021-04-14)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.122...v2.0.123)
