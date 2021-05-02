@@ -15,6 +15,8 @@
     <PackageReference Include="Microting.eForm" Version="5.0.2" />
     <PackageReference Include="OtpSharp.Core" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="5.0.1" />
+    <PackageReference Include="System.IO.Ports" Version="5.0.1" />
   </ItemGroup>
   <ItemGroup>
       <None Include="images\icon.png">
