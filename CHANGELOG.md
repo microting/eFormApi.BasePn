@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.5](https://github.com/microting/eFormApi.BasePn/tree/v3.0.5) (2021-05-04)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.4...v3.0.5)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 5.1.0 to 5.1.1 [\#102](https://github.com/microting/eFormApi.BasePn/issues/102)
+
 ## [v3.0.4](https://github.com/microting/eFormApi.BasePn/tree/v3.0.4) (2021-05-04)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.3...v3.0.4)
@@ -204,6 +212,10 @@
 
 - Bump Microting.eForm from 4.4.22 to 4.4.23 [\#77](https://github.com/microting/eFormApi.BasePn/issues/77)
 
+**Merged pull requests:**
+
+- Add helper for add sort to query [\#76](https://github.com/microting/eFormApi.BasePn/pull/76) ([sanioooook](https://github.com/sanioooook))
+
 ## [v2.0.114](https://github.com/microting/eFormApi.BasePn/tree/v2.0.114) (2021-04-08)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.113...v2.0.114)
@@ -334,7 +346,6 @@
 
 **Merged pull requests:**
 
-- Add helper for add sort to query [\#76](https://github.com/microting/eFormApi.BasePn/pull/76) ([sanioooook](https://github.com/sanioooook))
 -  Add model for tags and model for paged [\#48](https://github.com/microting/eFormApi.BasePn/pull/48) ([sanioooook](https://github.com/sanioooook))
 
 ## [v2.0.98](https://github.com/microting/eFormApi.BasePn/tree/v2.0.98) (2021-02-24)
