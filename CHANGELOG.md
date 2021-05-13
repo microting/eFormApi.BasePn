@@ -1,5 +1,17 @@
 # Changelog
 
+## [v3.0.10](https://github.com/microting/eFormApi.BasePn/tree/v3.0.10) (2021-05-13)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.9...v3.0.10)
+
+**Implemented enhancements:**
+
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.5 to 5.0.6 [\#115](https://github.com/microting/eFormApi.BasePn/issues/115)
+- Bump Microsoft.Extensions.Localization from 5.0.5 to 5.0.6 [\#114](https://github.com/microting/eFormApi.BasePn/issues/114)
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.5 to 5.0.6 [\#113](https://github.com/microting/eFormApi.BasePn/issues/113)
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.5 to 5.0.6 [\#112](https://github.com/microting/eFormApi.BasePn/issues/112)
+- Bump Microting.eForm from 5.1.5 to 5.2.0 [\#111](https://github.com/microting/eFormApi.BasePn/issues/111)
+
 ## [v3.0.9](https://github.com/microting/eFormApi.BasePn/tree/v3.0.9) (2021-05-11)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.8...v3.0.9)
