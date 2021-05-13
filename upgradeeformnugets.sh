@@ -6,7 +6,7 @@ if (( "$GIT_STATUS" > 0 )); then
 	git pull
   CURRENT_NUMBER_OF_COMMITS=`git log --oneline | wc -l`
 
-	PACKAGES=('Microting.eForm')
+	PACKAGES=('Microting.eForm' 'Microsoft.AspNetCore.Identity.UI' 'Microsoft.AspNetCore.Identity.EntityFrameworkCore' 'Microsoft.Extensions.Localization' 'Microsoft.EntityFrameworkCore.Design')
 	PROJECT_NAME='eFormApi.BasePn.csproj'
 	REPOSITORY='eFormApi.BasePn'
 
