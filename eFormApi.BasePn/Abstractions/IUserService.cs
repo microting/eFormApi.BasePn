@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using eForm.Infrastructure.Data.Entities;
     using Infrastructure.Database.Entities;
 
     public interface IUserService
@@ -23,7 +24,7 @@
         Task AddToRoleAsync(EformUser user, string role);
         Task<string> GetCurrentUserFullName();
         Task<string> GetFullNameUserByUserIdAsync(int userId);
-        Task<string> GetCurrentUserLanguage();
-        Task<string> GetLanguageByUserIdAsync(int userId);
+        Task<Language> GetCurrentUserLanguage();
+        Task<Language> GetLanguageByUserIdAsync(int userId);
     }
 }
