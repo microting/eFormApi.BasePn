@@ -1,5 +1,32 @@
 # Changelog
 
+## [v3.0.20](https://github.com/microting/eFormApi.BasePn/tree/v3.0.20) (2021-06-09)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.19...v3.0.20)
+
+**Implemented enhancements:**
+
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.6 to 5.0.7 [\#135](https://github.com/microting/eFormApi.BasePn/issues/135)
+- Bump Microsoft.Extensions.Localization from 5.0.6 to 5.0.7 [\#134](https://github.com/microting/eFormApi.BasePn/issues/134)
+- Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.6 to 5.0.7 [\#133](https://github.com/microting/eFormApi.BasePn/issues/133)
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.6 to 5.0.7 [\#132](https://github.com/microting/eFormApi.BasePn/issues/132)
+
+## [v3.0.19](https://github.com/microting/eFormApi.BasePn/tree/v3.0.19) (2021-06-07)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.18...v3.0.19)
+
+**Merged pull requests:**
+
+- Add case update helper [\#127](https://github.com/microting/eFormApi.BasePn/pull/127) ([sanioooook](https://github.com/sanioooook))
+
+## [v3.0.18](https://github.com/microting/eFormApi.BasePn/tree/v3.0.18) (2021-06-04)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.17...v3.0.18)
+
+**Merged pull requests:**
+
+- Add get language current user [\#126](https://github.com/microting/eFormApi.BasePn/pull/126) ([sanioooook](https://github.com/sanioooook))
+
 ## [v3.0.17](https://github.com/microting/eFormApi.BasePn/tree/v3.0.17) (2021-06-03)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.16...v3.0.17)
