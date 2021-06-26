@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.24](https://github.com/microting/eFormApi.BasePn/tree/v3.0.24) (2021-06-26)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.23...v3.0.24)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 5.2.12 to 5.2.13 [\#141](https://github.com/microting/eFormApi.BasePn/issues/141)
+
 ## [v3.0.23](https://github.com/microting/eFormApi.BasePn/tree/v3.0.23) (2021-06-24)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.22...v3.0.23)
@@ -435,6 +443,10 @@
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.105...v2.0.106)
 
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 4.4.10 to 4.4.11 [\#60](https://github.com/microting/eFormApi.BasePn/issues/60)
+
 ## [v2.0.105](https://github.com/microting/eFormApi.BasePn/tree/v2.0.105) (2021-03-18)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.104...v2.0.105)
@@ -457,16 +469,11 @@
 
 **Implemented enhancements:**
 
-- Bump Microting.eForm from 4.4.10 to 4.4.11 [\#60](https://github.com/microting/eFormApi.BasePn/issues/60)
 - Bump Microting.eForm from 4.4.6 to 4.4.7 [\#57](https://github.com/microting/eFormApi.BasePn/issues/57)
 
 ## [v2.0.102](https://github.com/microting/eFormApi.BasePn/tree/v2.0.102) (2021-03-11)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.101...v2.0.102)
-
-**Merged pull requests:**
-
-- add method for get full user name by user id [\#56](https://github.com/microting/eFormApi.BasePn/pull/56) ([sanioooook](https://github.com/sanioooook))
 
 ## [v2.0.101](https://github.com/microting/eFormApi.BasePn/tree/v2.0.101) (2021-03-10)
 
@@ -743,6 +750,7 @@
 
 **Merged pull requests:**
 
+- add method for get full user name by user id [\#56](https://github.com/microting/eFormApi.BasePn/pull/56) ([sanioooook](https://github.com/sanioooook))
 - Updated e2eid [\#26](https://github.com/microting/eFormApi.BasePn/pull/26) ([Gid733](https://github.com/Gid733))
 
 ## [v2.0.39](https://github.com/microting/eFormApi.BasePn/tree/v2.0.39) (2020-10-29)
