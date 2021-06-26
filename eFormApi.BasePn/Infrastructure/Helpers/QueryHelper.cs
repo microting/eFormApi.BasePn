@@ -60,5 +60,27 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
 
             return query;
         }
+
+
+        /// <summary>
+        /// Adds a search for the specified field names to the query. Example of the final value:<br></br>
+        /// <code>query.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter))</code>
+        /// </summary>
+        /// <typeparam name="T">Type query</typeparam>
+        /// <param name="query">The query to which you want to add a search for the specified fields</param>
+        /// <param name="nameFields">Names of fields to add a search for</param>
+        /// <param name="filter">Search value</param>
+        /// <returns>Query with added search values for several fields</returns>
+        public static IQueryable<T> AddFilterToQuery<T>(
+            IQueryable<T> query,
+            IEnumerable<string> nameFields,
+            string filter)
+        {
+            if(!string.IsNullOrEmpty(filter))
+            {
+                query = query.CustomFiltering(nameFields, filter);
+            }
+            return query;
+        }
     }
 }
