@@ -1,8 +1,30 @@
-﻿using System.Linq;
-using System.Linq.Expressions;
+﻿/*
+The MIT License (MIT)
+Copyright (c) 2007 - 2021 Microting A/S
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 
 namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+
     public static class OrderedQueryableExtensions
     {
         public static IOrderedQueryable<TSource> CustomOrderBy<TSource>(
@@ -68,5 +90,65 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
                 .Invoke(genericMethod, new object[] {query, selector});
             return newQuery;
         }
+
+        /// <summary>
+        /// Adds a search for the specified field names to the query. Example of the final value:<br></br>
+        /// <code>query.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter))</code>
+        /// </summary>
+        /// <typeparam name="TSource">Type query</typeparam>
+        /// <param name="query">The query to which you want to add a search for the specified fields</param>
+        /// <param name="propertyNames">Names of fields to add a search for</param>
+        /// <param name="filter">Search value</param>
+        /// <returns>Query with added search values for several fields</returns>
+        public static IQueryable<TSource> CustomFiltering<TSource>(
+            this IQueryable<TSource> query, IEnumerable<string> propertyNames, string filter)
+        {
+            var expressions = new List<Expression>();
+
+            // create parametr with name p and type TSourse
+            var parameter = Expression.Parameter(typeof(TSource), "p");
+
+            // get method **Contains()** on type **string**
+            var containsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+
+            // foreach on all fields on entity type and take only string type fields and fields, whose names were transmitted
+            foreach (var prop in typeof(TSource).GetProperties().Where(x => propertyNames.Contains(x.Name) && x.PropertyType == typeof(string)))
+            {
+                var memberExpression = Expression.PropertyOrField(parameter, prop.Name);
+
+                // string valueExpression = filter;
+                var valueExpression = Expression.Constant(filter, typeof(string));
+
+                // prop.Name.Contains(filter)
+                var containsExpression = Expression.Call(memberExpression, containsMethod, valueExpression);
+
+                expressions.Add(containsExpression);
+            }
+
+            // if not need filtration - return
+            if (expressions.Count == 0)
+            {
+                return query;
+            }
+
+            // assing first expression
+            var orExpression = expressions[0];
+
+            // and start from 1 add contains like p.Name.Contains(filter) || p.Description.Contains(filter) || ...
+            for (var i = 1; i < expressions.Count; i++)
+            {
+                orExpression = Expression.OrElse(orExpression, expressions[i]);
+            }
+
+            // p.Name or p.Description - **example**
+            // p => p.Name.Contains(filter) || p.Description.Contains(filter) || ...
+            var expression = Expression.Lambda<Func<TSource, bool>>(
+                orExpression, parameter);
+
+            // query.Where(p => p.Name.Contains(filter) || p.Description.Contains(filter) || ...)
+            return query.Where(expression);
+
+        }
+
     }
 }
