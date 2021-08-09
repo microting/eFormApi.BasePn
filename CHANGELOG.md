@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.36](https://github.com/microting/eFormApi.BasePn/tree/v3.0.36) (2021-08-09)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.35...v3.0.36)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 5.2.23 to 5.2.25 [\#163](https://github.com/microting/eFormApi.BasePn/issues/163)
+
 ## [v3.0.35](https://github.com/microting/eFormApi.BasePn/tree/v3.0.35) (2021-08-05)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.34...v3.0.35)
@@ -123,7 +131,6 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 5.2.8 to 5.2.11 [\#137](https://github.com/microting/eFormApi.BasePn/issues/137)
-- Bump Microsoft.AspNetCore.Identity.UI from 5.0.6 to 5.0.7 [\#132](https://github.com/microting/eFormApi.BasePn/issues/132)
 
 ## [v3.0.20](https://github.com/microting/eFormApi.BasePn/tree/v3.0.20) (2021-06-09)
 
@@ -134,6 +141,7 @@
 - Bump Microsoft.EntityFrameworkCore.Design from 5.0.6 to 5.0.7 [\#135](https://github.com/microting/eFormApi.BasePn/issues/135)
 - Bump Microsoft.Extensions.Localization from 5.0.6 to 5.0.7 [\#134](https://github.com/microting/eFormApi.BasePn/issues/134)
 - Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.6 to 5.0.7 [\#133](https://github.com/microting/eFormApi.BasePn/issues/133)
+- Bump Microsoft.AspNetCore.Identity.UI from 5.0.6 to 5.0.7 [\#132](https://github.com/microting/eFormApi.BasePn/issues/132)
 
 ## [v3.0.19](https://github.com/microting/eFormApi.BasePn/tree/v3.0.19) (2021-06-07)
 
@@ -414,11 +422,14 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 4.4.29 to 4.4.30 [\#83](https://github.com/microting/eFormApi.BasePn/issues/83)
-- Bump Microting.eForm from 4.4.28 to 4.4.29 [\#82](https://github.com/microting/eFormApi.BasePn/issues/82)
 
 ## [v2.0.120](https://github.com/microting/eFormApi.BasePn/tree/v2.0.120) (2021-04-13)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.119...v2.0.120)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 4.4.28 to 4.4.29 [\#82](https://github.com/microting/eFormApi.BasePn/issues/82)
 
 ## [v2.0.119](https://github.com/microting/eFormApi.BasePn/tree/v2.0.119) (2021-04-13)
 
@@ -471,11 +482,14 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 4.4.21 to 4.4.22 [\#75](https://github.com/microting/eFormApi.BasePn/issues/75)
-- Bump Microting.eForm from 4.4.20 to 4.4.21 [\#73](https://github.com/microting/eFormApi.BasePn/issues/73)
 
 ## [v2.0.113](https://github.com/microting/eFormApi.BasePn/tree/v2.0.113) (2021-04-07)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.112...v2.0.113)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 4.4.20 to 4.4.21 [\#73](https://github.com/microting/eFormApi.BasePn/issues/73)
 
 ## [v2.0.112](https://github.com/microting/eFormApi.BasePn/tree/v2.0.112) (2021-04-06)
 
@@ -516,14 +530,11 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 4.4.13 to 4.4.14 [\#62](https://github.com/microting/eFormApi.BasePn/issues/62)
+- Bump Microting.eForm from 4.4.11 to 4.4.13 [\#61](https://github.com/microting/eFormApi.BasePn/issues/61)
 
 ## [v2.0.107](https://github.com/microting/eFormApi.BasePn/tree/v2.0.107) (2021-03-29)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.106...v2.0.107)
-
-**Implemented enhancements:**
-
-- Bump Microting.eForm from 4.4.11 to 4.4.13 [\#61](https://github.com/microting/eFormApi.BasePn/issues/61)
 
 ## [v2.0.106](https://github.com/microting/eFormApi.BasePn/tree/v2.0.106) (2021-03-18)
 
@@ -540,11 +551,16 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 4.4.9 to 4.4.10 [\#59](https://github.com/microting/eFormApi.BasePn/issues/59)
-- Bump Microting.eForm from 4.4.7 to 4.4.9 [\#58](https://github.com/microting/eFormApi.BasePn/issues/58)
+- Bump Microting.eForm from 4.4.4 to 4.4.6 [\#55](https://github.com/microting/eFormApi.BasePn/issues/55)
 
 ## [v2.0.104](https://github.com/microting/eFormApi.BasePn/tree/v2.0.104) (2021-03-17)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.103...v2.0.104)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 4.4.7 to 4.4.9 [\#58](https://github.com/microting/eFormApi.BasePn/issues/58)
+- Bump Microting.eForm from 4.4.3 to 4.4.4 [\#50](https://github.com/microting/eFormApi.BasePn/issues/50)
 
 ## [v2.0.103](https://github.com/microting/eFormApi.BasePn/tree/v2.0.103) (2021-03-15)
 
@@ -566,17 +582,9 @@
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.100...v2.0.101)
 
-**Implemented enhancements:**
-
-- Bump Microting.eForm from 4.4.4 to 4.4.6 [\#55](https://github.com/microting/eFormApi.BasePn/issues/55)
-
 ## [v2.0.100](https://github.com/microting/eFormApi.BasePn/tree/v2.0.100) (2021-03-09)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.99...v2.0.100)
-
-**Implemented enhancements:**
-
-- Bump Microting.eForm from 4.4.3 to 4.4.4 [\#50](https://github.com/microting/eFormApi.BasePn/issues/50)
 
 ## [v2.0.99](https://github.com/microting/eFormApi.BasePn/tree/v2.0.99) (2021-03-05)
 
@@ -834,10 +842,6 @@
 ## [v2.0.40](https://github.com/microting/eFormApi.BasePn/tree/v2.0.40) (2020-10-30)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.39...v2.0.40)
-
-**Merged pull requests:**
-
-- Updated e2eid [\#26](https://github.com/microting/eFormApi.BasePn/pull/26) ([Gid733](https://github.com/Gid733))
 
 ## [v2.0.39](https://github.com/microting/eFormApi.BasePn/tree/v2.0.39) (2020-10-29)
 
@@ -1396,7 +1400,7 @@
 - Update abstractions  [\#12](https://github.com/microting/eFormApi.BasePn/pull/12) ([Gid733](https://github.com/Gid733))
 - New settings [\#10](https://github.com/microting/eFormApi.BasePn/pull/10) ([Gid733](https://github.com/Gid733))
 - Plugin settings [\#9](https://github.com/microting/eFormApi.BasePn/pull/9) ([emleonid](https://github.com/emleonid))
-- Updated version for plugins dynamic loading [\#8](https://github.com/microting/eFormApi.BasePn/pull/8) ([Gid733](https://github.com/Gid733))
+- Menu localization [\#7](https://github.com/microting/eFormApi.BasePn/pull/7) ([Gid733](https://github.com/Gid733))
 - Added localization with json/resx files for plugins [\#6](https://github.com/microting/eFormApi.BasePn/pull/6) ([Gid733](https://github.com/Gid733))
 - Added smtp to login model [\#5](https://github.com/microting/eFormApi.BasePn/pull/5) ([Gid733](https://github.com/Gid733))
 
