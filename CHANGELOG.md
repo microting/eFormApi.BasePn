@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.43](https://github.com/microting/eFormApi.BasePn/tree/v3.0.43) (2021-08-17)
+
+[Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.42...v3.0.43)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 5.2.32 to 5.2.33 [\#174](https://github.com/microting/eFormApi.BasePn/issues/174)
+
 ## [v3.0.42](https://github.com/microting/eFormApi.BasePn/tree/v3.0.42) (2021-08-12)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v3.0.41...v3.0.42)
@@ -151,6 +159,7 @@
 **Merged pull requests:**
 
 - Add specified filtering [\#142](https://github.com/microting/eFormApi.BasePn/pull/142) ([sanioooook](https://github.com/sanioooook))
+- Add helper for add sort to query [\#76](https://github.com/microting/eFormApi.BasePn/pull/76) ([sanioooook](https://github.com/sanioooook))
 
 ## [v3.0.24](https://github.com/microting/eFormApi.BasePn/tree/v3.0.24) (2021-06-26)
 
@@ -183,6 +192,7 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 5.2.8 to 5.2.11 [\#137](https://github.com/microting/eFormApi.BasePn/issues/137)
+- Bump Microsoft.Extensions.Localization from 5.0.6 to 5.0.7 [\#134](https://github.com/microting/eFormApi.BasePn/issues/134)
 
 ## [v3.0.20](https://github.com/microting/eFormApi.BasePn/tree/v3.0.20) (2021-06-09)
 
@@ -191,7 +201,6 @@
 **Implemented enhancements:**
 
 - Bump Microsoft.EntityFrameworkCore.Design from 5.0.6 to 5.0.7 [\#135](https://github.com/microting/eFormApi.BasePn/issues/135)
-- Bump Microsoft.Extensions.Localization from 5.0.6 to 5.0.7 [\#134](https://github.com/microting/eFormApi.BasePn/issues/134)
 - Bump Microsoft.AspNetCore.Identity.EntityFrameworkCore from 5.0.6 to 5.0.7 [\#133](https://github.com/microting/eFormApi.BasePn/issues/133)
 - Bump Microsoft.AspNetCore.Identity.UI from 5.0.6 to 5.0.7 [\#132](https://github.com/microting/eFormApi.BasePn/issues/132)
 
@@ -442,14 +451,11 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 4.4.33 to 4.4.34 [\#87](https://github.com/microting/eFormApi.BasePn/issues/87)
+- Bump Microting.eForm from 4.4.27 to 4.4.28 [\#81](https://github.com/microting/eFormApi.BasePn/issues/81)
 
 ## [v2.0.124](https://github.com/microting/eFormApi.BasePn/tree/v2.0.124) (2021-04-14)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.123...v2.0.124)
-
-**Implemented enhancements:**
-
-- Bump Microting.eForm from 4.4.32 to 4.4.33 [\#86](https://github.com/microting/eFormApi.BasePn/issues/86)
 
 ## [v2.0.123](https://github.com/microting/eFormApi.BasePn/tree/v2.0.123) (2021-04-14)
 
@@ -463,16 +469,13 @@
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.121...v2.0.122)
 
-**Implemented enhancements:**
-
-- Bump Microting.eForm from 4.4.30 to 4.4.31 [\#84](https://github.com/microting/eFormApi.BasePn/issues/84)
-
 ## [v2.0.121](https://github.com/microting/eFormApi.BasePn/tree/v2.0.121) (2021-04-14)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.120...v2.0.121)
 
 **Implemented enhancements:**
 
+- Bump Microting.eForm from 4.4.32 to 4.4.33 [\#86](https://github.com/microting/eFormApi.BasePn/issues/86)
 - Bump Microting.eForm from 4.4.29 to 4.4.30 [\#83](https://github.com/microting/eFormApi.BasePn/issues/83)
 
 ## [v2.0.120](https://github.com/microting/eFormApi.BasePn/tree/v2.0.120) (2021-04-13)
@@ -481,15 +484,12 @@
 
 **Implemented enhancements:**
 
+- Bump Microting.eForm from 4.4.30 to 4.4.31 [\#84](https://github.com/microting/eFormApi.BasePn/issues/84)
 - Bump Microting.eForm from 4.4.28 to 4.4.29 [\#82](https://github.com/microting/eFormApi.BasePn/issues/82)
 
 ## [v2.0.119](https://github.com/microting/eFormApi.BasePn/tree/v2.0.119) (2021-04-13)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.118...v2.0.119)
-
-**Implemented enhancements:**
-
-- Bump Microting.eForm from 4.4.27 to 4.4.28 [\#81](https://github.com/microting/eFormApi.BasePn/issues/81)
 
 ## [v2.0.118](https://github.com/microting/eFormApi.BasePn/tree/v2.0.118) (2021-04-12)
 
@@ -522,10 +522,6 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 4.4.22 to 4.4.23 [\#77](https://github.com/microting/eFormApi.BasePn/issues/77)
-
-**Merged pull requests:**
-
-- Add helper for add sort to query [\#76](https://github.com/microting/eFormApi.BasePn/pull/76) ([sanioooook](https://github.com/sanioooook))
 
 ## [v2.0.114](https://github.com/microting/eFormApi.BasePn/tree/v2.0.114) (2021-04-08)
 
@@ -606,7 +602,6 @@
 **Implemented enhancements:**
 
 - Bump Microting.eForm from 4.4.9 to 4.4.10 [\#59](https://github.com/microting/eFormApi.BasePn/issues/59)
-- Bump Microting.eForm from 4.4.3 to 4.4.4 [\#50](https://github.com/microting/eFormApi.BasePn/issues/50)
 
 ## [v2.0.104](https://github.com/microting/eFormApi.BasePn/tree/v2.0.104) (2021-03-17)
 
@@ -643,6 +638,10 @@
 ## [v2.0.100](https://github.com/microting/eFormApi.BasePn/tree/v2.0.100) (2021-03-09)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v2.0.99...v2.0.100)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 4.4.3 to 4.4.4 [\#50](https://github.com/microting/eFormApi.BasePn/issues/50)
 
 ## [v2.0.99](https://github.com/microting/eFormApi.BasePn/tree/v2.0.99) (2021-03-05)
 
@@ -904,6 +903,7 @@
 **Merged pull requests:**
 
 - Updated e2eid [\#26](https://github.com/microting/eFormApi.BasePn/pull/26) ([Gid733](https://github.com/Gid733))
+- Added new fields to settings [\#19](https://github.com/microting/eFormApi.BasePn/pull/19) ([Gid733](https://github.com/Gid733))
 
 ## [v2.0.39](https://github.com/microting/eFormApi.BasePn/tree/v2.0.39) (2020-10-29)
 
@@ -1197,10 +1197,6 @@
 ## [v1.2.50](https://github.com/microting/eFormApi.BasePn/tree/v1.2.50) (2020-03-20)
 
 [Full Changelog](https://github.com/microting/eFormApi.BasePn/compare/v1.2.49...v1.2.50)
-
-**Merged pull requests:**
-
-- Added new fields to settings [\#19](https://github.com/microting/eFormApi.BasePn/pull/19) ([Gid733](https://github.com/Gid733))
 
 ## [v1.2.49](https://github.com/microting/eFormApi.BasePn/tree/v1.2.49) (2020-03-20)
 
