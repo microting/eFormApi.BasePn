@@ -23,6 +23,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
     using System.Collections.Generic;
     using Extensions;
     using System.Linq;
+    using Models.Common;
 
     public class QueryHelper
     {
@@ -76,11 +77,32 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
             IEnumerable<string> nameFields,
             string filter)
         {
-            if(!string.IsNullOrEmpty(filter))
+            if (!string.IsNullOrEmpty(filter))
             {
                 query = query.CustomFiltering(nameFields, filter);
             }
             return query;
         }
+
+        /// <summary>
+        /// Adds a search for the specified field names to the query and add sorting. Example of the final value:<br></br>
+        /// <code>query.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter))</code>
+        /// </summary>
+        /// <typeparam name="T">Type query</typeparam>
+        /// <param name="query">The query to which you want to add a search for the specified fields and add sorting</param>
+        /// <param name="filterAndSortModel">model with search value and sort value</param>
+        /// <param name="nameFieldsForFiltering">Names of fields to add a search for</param>
+        /// <param name="excludeSort">fields to exclude from sorting</param>
+        /// <returns>Query with added search values for several fields and add sorting</returns>
+        public static IQueryable<T> AddFilterAndSortToQuery<T>(
+            IQueryable<T> query,
+            FilterAndSortModel filterAndSortModel,
+            IEnumerable<string> nameFieldsForFiltering,
+            IList<string> excludeSort = null)
+        {
+            query = AddFilterToQuery(query, nameFieldsForFiltering, filterAndSortModel.NameFilter);
+            return AddSortToQuery(query, filterAndSortModel.Sort, filterAndSortModel.IsSortDsc, excludeSort);
+        }
+
     }
 }
