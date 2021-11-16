@@ -106,21 +106,74 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
             var expressions = new List<Expression>();
 
             // create parametr with name p and type TSourse
-            var parameter = Expression.Parameter(typeof(TSource), "p");
+            var parameter = Expression.Parameter(typeof(TSource), "x");
 
             // get method **Contains()** on type **string**
             var containsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
 
+
+            // get method **ToUpper()** on type **string**
+            var toUpperMethod = typeof(string).GetMethod("ToUpper", Type.EmptyTypes);
+
+            // get method **ToString()** on type **DateTime?**
+            var nullebleDateTimeToStringMethod = typeof(DateTime?).GetMethod("ToString", Type.EmptyTypes);
+
+            // get method **ToString()** on type **DateTime**
+            var dateTimeToStringMethod = typeof(DateTime).GetMethod("ToString", Type.EmptyTypes);
+
+            // get method **ToString()** on type **int?**
+            var nullebleIntToStringMethod = typeof(int?).GetMethod("ToString", Type.EmptyTypes);
+
+            // get method **ToString()** on type **int**
+            var intToStringMethod = typeof(int).GetMethod("ToString", Type.EmptyTypes);
+
             // foreach on all fields on entity type and take only string type fields and fields, whose names were transmitted
-            foreach (var prop in typeof(TSource).GetProperties().Where(x => propertyNames.Contains(x.Name) && x.PropertyType == typeof(string)))
+            foreach (var prop in typeof(TSource).GetProperties().Where(x =>
+                         propertyNames.Contains(x.Name) && (x.PropertyType == typeof(string) ||
+                                                            x.PropertyType == typeof(int?) ||
+                                                            x.PropertyType == typeof(DateTime?) ||
+                                                            x.PropertyType == typeof(int) ||
+                                                            x.PropertyType == typeof(DateTime))))
             {
+                // x => x.propName
                 var memberExpression = Expression.PropertyOrField(parameter, prop.Name);
 
-                // string valueExpression = filter;
-                var valueExpression = Expression.Constant(filter, typeof(string));
+                // if type prop not string - need to call ToString()
+                MethodCallExpression toStringCall;
+                if (prop.PropertyType == typeof(DateTime))
+                {
+                    // x.propName.ToString()
+                    toStringCall = Expression.Call(memberExpression,dateTimeToStringMethod);
+                }
+                else if (prop.PropertyType == typeof(DateTime?))
+                {
+                    // x.propName.ToString()
+                    toStringCall = Expression.Call(memberExpression, nullebleDateTimeToStringMethod);
+                }
+                else if (prop.PropertyType == typeof(int?))
+                {
+                    // x.propName.ToString()
+                    toStringCall = Expression.Call(memberExpression, nullebleIntToStringMethod);
+                }
+                else if (prop.PropertyType == typeof(int))
+                {
+                    // x.propName.ToString()
+                    toStringCall = Expression.Call(memberExpression, intToStringMethod);
+                }
+                else
+                {
+                    // prop is string. not need call ToString()
+                    toStringCall = null;
+                }
 
-                // prop.Name.Contains(filter)
-                var containsExpression = Expression.Call(memberExpression, containsMethod, valueExpression);
+                // string valueExpression = filter;
+                var valueExpression = Expression.Constant(filter.ToUpper(), typeof(string));
+
+                // x.propName(x.propName is string ? none : .ToString()).ToUpper()
+                var toUpperExpression = Expression.Call(toStringCall == null ? memberExpression : toStringCall, toUpperMethod);
+
+                // x.propName(x.propName is string ? none : .ToString()).ToUpper().Contains(filter.ToUpper())
+                var containsExpression = Expression.Call(toUpperExpression, containsMethod, valueExpression);
 
                 expressions.Add(containsExpression);
             }
@@ -134,18 +187,18 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
             // assing first expression
             var orExpression = expressions[0];
 
-            // and start from 1 add contains like p.Name.Contains(filter) || p.Description.Contains(filter) || ...
+            // and start from 1 add contains like x.Name.Contains(filter) || x.Description.Contains(filter) || ...
             for (var i = 1; i < expressions.Count; i++)
             {
                 orExpression = Expression.OrElse(orExpression, expressions[i]);
             }
 
-            // p.Name or p.Description - **example**
-            // p => p.Name.Contains(filter) || p.Description.Contains(filter) || ...
+            // x.Name or x.Description - **example**
+            // x => x.Name.Contains(filter) || x.Description.Contains(filter) || ...
             var expression = Expression.Lambda<Func<TSource, bool>>(
                 orExpression, parameter);
 
-            // query.Where(p => p.Name.Contains(filter) || p.Description.Contains(filter) || ...)
+            // query.Where(x => x.Name.Contains(filter) || x.Description.Contains(filter) || ...)
             return query.Where(expression);
 
         }

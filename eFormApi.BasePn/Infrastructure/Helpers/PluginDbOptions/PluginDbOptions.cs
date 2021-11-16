@@ -64,7 +64,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
                     // Add version
                     var currentVersion = config.Version;
                     var version = currentVersion + 1;
-                    var newConfigVersion = new PluginConfigurationValueVersion()
+                    var newConfigVersion = new PluginConfigurationValueVersion
                     {
                         Name = config.Name,
                         Value = config.Value,
