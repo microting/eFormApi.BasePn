@@ -1,4 +1,4 @@
-﻿/*
+/*
 The MIT License (MIT)
 
 Copyright (c) 2007 - 2021 Microting A/S
@@ -24,6 +24,7 @@ SOFTWARE.
 
 namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.Case.CaseEdit
 {
+    using System;
     using System.Collections.Generic;
 
     public class ReplyRequest
@@ -31,6 +32,10 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.Case.CaseE
         public int Id { get; set; }
 
         public string Label { get; set; }
+
+        public DateTime DoneUserEditable { get; set; }
+
+        public bool IsDoneAtEditable { get; set; }
 
         public List<CaseEditRequest> ElementList { get; set; }
     }
