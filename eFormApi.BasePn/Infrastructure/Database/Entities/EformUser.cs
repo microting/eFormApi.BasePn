@@ -22,5 +22,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
         public string TimeZone { get; set; }
         
         public string Formats { get; set; }
+
+        public bool IsUserbackEnabled { get; set; }
     }
 }
