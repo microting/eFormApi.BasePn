@@ -137,7 +137,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
                     break;
                 case Constants.FieldTypes.SingleSelect:
                     var singleSelect = editRequestField.FieldValues?.First();
-                    if (singleSelect?.Value != null && singleSelect.Value != "0" && singleSelect.FieldId != 0)
+                    if (singleSelect?.Value != null)
                     {
                         var val = $"{singleSelect.FieldId}|{singleSelect.Value.ToString()}";
                         list.Add(val);
@@ -164,7 +164,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
                     break;
                 case Constants.FieldTypes.MultiSelect:
                     var multiFirst = editRequestField?.FieldValues?.First();
-                    if (multiFirst?.Value != null && multiFirst.FieldId != 0)
+                    if (multiFirst?.Value != null)
                     {
                         var val = $"{multiFirst.FieldId}|{multiFirst.Value.ToString()}";
                         list.Add(val);

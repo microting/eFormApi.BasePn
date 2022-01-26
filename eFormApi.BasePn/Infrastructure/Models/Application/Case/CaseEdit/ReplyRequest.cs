@@ -33,7 +33,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.Case.CaseE
 
         public string Label { get; set; }
 
-        public DateTime DoneUserEditable { get; set; }
+        public DateTime DoneAt { get; set; }
 
         public bool IsDoneAtEditable { get; set; }
 
