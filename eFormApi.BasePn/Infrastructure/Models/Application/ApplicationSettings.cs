@@ -7,5 +7,6 @@
         public string SecurityCode { get; set; }
         public string DefaultPassword { get; set; }
         public bool IsTwoFactorForced { get; set; }
+        public bool IsUserbackWidgetEnabled { get; set; }
     }
 }
