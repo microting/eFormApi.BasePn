@@ -8,5 +8,6 @@
         public string DefaultPassword { get; set; }
         public bool IsTwoFactorForced { get; set; }
         public bool IsUserbackWidgetEnabled { get; set; }
+        public string UserbackToken { get; set; }
     }
 }
