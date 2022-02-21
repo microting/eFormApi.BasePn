@@ -15,5 +15,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
 
         public List<string> Guards { get; set; }
             = new List<string>();
+
+        public bool IsInternalLink { get; set; }
     }
 }

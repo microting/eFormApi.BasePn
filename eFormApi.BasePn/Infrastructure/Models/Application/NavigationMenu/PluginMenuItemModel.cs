@@ -1,4 +1,4 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.NavigationMenu
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.NavigationMenu
 {
     using System.Collections.Generic;
 
@@ -15,5 +15,7 @@
            = new List<PluginMenuItemModel>();
         public List<PluginMenuTranslationModel> Translations { get; set; }
             = new List<PluginMenuTranslationModel>();
+
+        public bool IsInternalLink { get; set; }
     }
 }
