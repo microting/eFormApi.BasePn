@@ -38,5 +38,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.Case.CaseE
         public bool IsDoneAtEditable { get; set; }
 
         public List<CaseEditRequest> ElementList { get; set; }
+
+        public int ExtraId { get; set; }
     }
 }
