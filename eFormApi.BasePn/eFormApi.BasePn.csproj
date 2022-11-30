@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Microting.eFormApi.BasePn</RootNamespace>
     <AssemblyName>Microting.eFormApi.BasePn</AssemblyName>
     <PackageIcon>icon.png</PackageIcon>
