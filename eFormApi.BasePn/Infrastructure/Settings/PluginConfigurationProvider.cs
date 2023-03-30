@@ -12,7 +12,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Delegates;
 namespace Microting.eFormApi.BasePn.Infrastructure.Settings
 {
     public class PluginConfigurationProvider<TDbContext>
-        : ConfigurationProvider where TDbContext 
+        : ConfigurationProvider where TDbContext
         : DbContext, IPluginDbContext
     {
         private readonly string _connectionString;
@@ -28,7 +28,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Settings
             _pluginConfigurationSeedData = pluginConfigurationSeedData;
             _dbContextFactory = dbContextFactory;
             ReloadDbConfigurationDelegates.ReloadDbConfigurationDelegate += ReloadPluginConfiguration;
-          
         }
 
         private void ReloadPluginConfiguration()
@@ -41,7 +40,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Settings
         public override void Load()
         {
             var seedData = _pluginConfigurationSeedData.Data;
-            if (_connectionString.IsNullOrEmpty() || _connectionString == "...")
+            if (string.IsNullOrEmpty(_connectionString) || _connectionString == "...")
             {
                 Data = seedData.ToDictionary(
                     item => item.Name,
@@ -49,19 +48,17 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Settings
             }
             else
             {
-                using (var dbContext = _dbContextFactory.CreateDbContext(new[] {_connectionString}))
-                {
-                    dbContext.Database.Migrate();
-                    Data = dbContext.PluginConfigurationValues
-                        .AsNoTracking()
-                        .ToDictionary(c => c.Name, c => c.Value);
+                using var dbContext = _dbContextFactory.CreateDbContext(new[] {_connectionString});
+                dbContext.Database.Migrate();
+                Data = dbContext.PluginConfigurationValues
+                    .AsNoTracking()
+                    .ToDictionary(c => c.Name, c => c.Value);
 
-                    if (!Data.Any())
-                    {
-                        Data = seedData.ToDictionary(
-                            item => item.Name,
-                            item => item.Value);
-                    }
+                if (!Data.Any())
+                {
+                    Data = seedData.ToDictionary(
+                        item => item.Name,
+                        item => item.Value);
                 }
             }
         }

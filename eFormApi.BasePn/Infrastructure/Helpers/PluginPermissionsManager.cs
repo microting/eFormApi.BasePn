@@ -1,4 +1,6 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
+﻿using System;
+
+namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -43,19 +45,31 @@
                 var list = await query.Select(x => x.GroupId).Distinct().ToListAsync();
                 foreach (var pluginGroupPermission in list)
                 {
-                    PluginGroupPermissionsListModel pluginGroupPermissionsListModel = new PluginGroupPermissionsListModel()
+                    try
                     {
-                        GroupId = pluginGroupPermission,
-                        Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
-                        {
-                            PermissionId = p.Id,
-                            PermissionName = p.PermissionName,
-                            ClaimName = p.ClaimName,
-                            IsEnabled = query.SingleOrDefault(x =>
-                                x.PermissionId == p.Id && x.GroupId == pluginGroupPermission).IsEnabled
-                        }).OrderBy(x => x.ClaimName).ToList()
-                    };
-                    pluginGroupPermissionsListModels.Add(pluginGroupPermissionsListModel);
+                        PluginGroupPermissionsListModel pluginGroupPermissionsListModel =
+                            new PluginGroupPermissionsListModel()
+                            {
+                                GroupId = pluginGroupPermission,
+                                Permissions = _dbContext.PluginPermissions.Select(p => new PluginGroupPermissionModel
+                                {
+                                    PermissionId = p.Id,
+                                    PermissionName = p.PermissionName,
+                                    ClaimName = p.ClaimName,
+                                    IsEnabled = query.FirstOrDefault(x =>
+                                        x.PermissionId == p.Id && x.GroupId == pluginGroupPermission) != null &&
+                                                query.First(x =>
+                                                    x.PermissionId == p.Id && x.GroupId == pluginGroupPermission)
+                                                    .IsEnabled
+                                }).OrderBy(x => x.ClaimName).ToList()
+                            };
+                        pluginGroupPermissionsListModels.Add(pluginGroupPermissionsListModel);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
                 }
                 return pluginGroupPermissionsListModels;
             }
