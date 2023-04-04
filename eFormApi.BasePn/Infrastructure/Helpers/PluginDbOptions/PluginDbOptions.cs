@@ -73,7 +73,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers.PluginDbOptions
                         UpdatedAt = DateTime.UtcNow,
                         WorkflowState = Constants.WorkflowStates.Created,
                         CreatedByUserId = userId,
-                        UpdatedByUserId = userId,
+                        UpdatedByUserId = userId
                     };
                     await dbContext.PluginConfigurationValueVersions.AddAsync(newConfigVersion);
                     config.Value = configElement.Value;
