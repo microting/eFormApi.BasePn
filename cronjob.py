@@ -40,7 +40,7 @@ def create_github_issue(package_name, old_version, new_version):
     
     # Create the issue title and body
     issue_title = f"Bump {package_name} from {old_version} to {new_version}"
-    issue_body = f"Please update the package {package_name} from version {old_version} to version {new_version}."
+    issue_body = ""
     
     # Create the request headers with the GitHub access token
     headers = {
