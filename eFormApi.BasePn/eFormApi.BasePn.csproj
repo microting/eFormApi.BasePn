@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.10" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.8" />
     <PackageReference Include="Microting.eForm" Version="7.0.61" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
