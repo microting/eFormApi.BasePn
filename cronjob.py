@@ -122,6 +122,8 @@ current_number_of_commits = len(output.splitlines())
 
 print("Current number of commits:", current_number_of_commits)
 
+subprocess.run(['dotnet','build'])
+
 # Iterate over the packages
 for package in PACKAGES:
     check_new_nuget_version(package)
