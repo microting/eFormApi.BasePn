@@ -9,8 +9,8 @@ GITHUB_REPO_OWNER = "microting"
 GITHUB_REPO_NAME = "eFormApi.BasePn"
 PROJECT_NAME = "eFormApi.BasePn/eFormApi.BasePn.csproj"
 # List of packages to check
-PACKAGES = ['Microting.eForm', 'Microsoft.AspNetCore.Identity.UI', 'Microsoft.AspNetCore.Identity.EntityFrameworkCore', 'Microsoft.Extensions.Localization', 'Microsoft.EntityFrameworkCore.Design']
-
+#PACKAGES = ['Microting.eForm', 'Microsoft.AspNetCore.Identity.UI', 'Microsoft.AspNetCore.Identity.EntityFrameworkCore', 'Microsoft.Extensions.Localization', 'Microsoft.EntityFrameworkCore.Design']
+PACKAGES = ['Microting.eForm']
 GITHUB_ACCESS_TOKEN = os.getenv("CHANGELOG_GITHUB_TOKEN")
 
 
@@ -121,6 +121,8 @@ output = output.decode("utf-8")
 current_number_of_commits = len(output.splitlines())
 
 print("Current number of commits:", current_number_of_commits)
+
+subprocess.run(['dotnet','build'])
 
 # Iterate over the packages
 for package in PACKAGES:
