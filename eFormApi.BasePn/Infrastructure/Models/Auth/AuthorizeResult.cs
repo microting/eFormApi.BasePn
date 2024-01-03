@@ -1,12 +1,14 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Auth
+﻿using System;
+
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Auth
 {
     public class AuthorizeResult
     {
         public int Id { get; set; }
-        public string role { get; set; }
-        public string access_token { get; set; }
-        public string token_type { get; set; }
-        public string expires_in { get; set; }
-        public string userName { get; set; }
+        public string Role { get; set; }
+        public string AccessToken { get; set; }
+        public string TokenType { get; set; }
+        public DateTime ExpiresIn { get; set; }
+        public string UserName { get; set; }
     }
 }
