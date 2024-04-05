@@ -40,5 +40,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.Case.CaseE
         public List<CaseEditRequest> ElementList { get; set; }
 
         public int ExtraId { get; set; }
+
+        public int SiteId { get; set; }
     }
 }
