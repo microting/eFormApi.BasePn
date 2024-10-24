@@ -36,5 +36,19 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
         public string ArchiveLastKnownLocation { get; set; }
 
         public string ArchiveLookedUpIp { get; set; }
+
+        public string TimeRegistrationSoftwareVersion { get; set; }
+
+        public string TimeRegistrationModel { get; set; }
+
+        public string TimeRegistrationManufacturer { get; set; }
+
+        public string TimeRegistrationOsVersion { get; set; }
+
+        public string TimeRegistrationLastIp { get; set; }
+
+        public string TimeRegistrationLastKnownLocation { get; set; }
+
+        public string TimeRegistrationLookedUpIp { get; set; }
     }
 }
