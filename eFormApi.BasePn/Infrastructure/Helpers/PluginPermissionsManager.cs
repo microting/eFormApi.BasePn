@@ -83,19 +83,24 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Helpers
             {
                 foreach (var permissionModel in groupPermissionModel.Permissions)
                 {
-                    var pluginGroupPermission = await _dbContext.PluginGroupPermissions
+                    var pluginGroupPermissionResult = await _dbContext.PluginGroupPermissions
+                        .Join(_dbContext.PluginPermissions, pgp => pgp.PermissionId, p => p.Id,
+                            (pgp, p) => new { pgp.GroupId, pgp.PermissionId, pgp.WorkflowState, pgp.IsEnabled, p.ClaimName })
                         .FirstOrDefaultAsync(pgp => pgp.GroupId == groupPermissionModel.GroupId
-                            && pgp.PermissionId == permissionModel.PermissionId
+                                                    && pgp.ClaimName == permissionModel.ClaimName
                             && pgp.WorkflowState != Constants.WorkflowStates.Removed);
 
-                    if (pluginGroupPermission != null)
+                    if (pluginGroupPermissionResult != null)
                     {
+                        var pluginGroupPermission = await _dbContext.PluginGroupPermissions
+                            .FirstAsync(x => x.GroupId == groupPermissionModel.GroupId
+                                                 && x.PermissionId == pluginGroupPermissionResult.PermissionId);
                         pluginGroupPermission.IsEnabled = permissionModel.IsEnabled;
                         pluginGroupPermission.Update(_dbContext);
                     }
                     else
                     {
-                        pluginGroupPermission = new PluginGroupPermission
+                        var pluginGroupPermission = new PluginGroupPermission
                         {
                             GroupId = groupPermissionModel.GroupId,
                             PermissionId = permissionModel.PermissionId,
