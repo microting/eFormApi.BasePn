@@ -96,6 +96,9 @@ def check_new_nuget_version(package_name):
         # Get the latest version and publication time
         versions = package_data["versions"]
         latest_version = versions[-1]
+        for line in versions:
+            if "-preview" not in line:
+                latest_version = line
         
         # Check if the latest version is alread installed
         installed_version = get_installed_version(package_name)
