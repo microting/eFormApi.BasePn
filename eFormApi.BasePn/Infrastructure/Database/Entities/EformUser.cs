@@ -50,5 +50,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
         public string TimeRegistrationLastKnownLocation { get; set; }
 
         public string TimeRegistrationLookedUpIp { get; set; }
+
+        public string EmailSha256 { get; set; }
     }
 }
