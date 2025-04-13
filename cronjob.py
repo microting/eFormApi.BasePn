@@ -9,8 +9,8 @@ GITHUB_REPO_OWNER = "microting"
 GITHUB_REPO_NAME = "eFormApi.BasePn"
 PROJECT_NAME = "eFormApi.BasePn/eFormApi.BasePn.csproj"
 # List of packages to check
-#PACKAGES = ['Microting.eForm', 'Microsoft.AspNetCore.Identity.UI', 'Microsoft.AspNetCore.Identity.EntityFrameworkCore', 'Microsoft.Extensions.Localization', 'Microsoft.EntityFrameworkCore.Design']
-PACKAGES = ['Microting.eForm']
+PACKAGES = ['Microting.eForm', 'Microsoft.Extensions.Localization' 'Microsoft.EntityFrameworkCore.Design' 'Microsoft.AspNetCore.Identity.EntityFrameworkCore' 'System.Diagnostics.PerformanceCounter' 'Microsoft.AspNetCore.Identity.UI']
+#PACKAGES = ['Microting.eForm']
 GITHUB_ACCESS_TOKEN = os.getenv("CHANGELOG_GITHUB_TOKEN")
 
 
