@@ -10,5 +10,6 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Models.Auth
         public string TokenType { get; set; }
         public DateTime ExpiresIn { get; set; }
         public string UserName { get; set; }
+        public bool IsFirstUser { get; set; }
     }
 }

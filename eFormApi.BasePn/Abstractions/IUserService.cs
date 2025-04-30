@@ -26,5 +26,6 @@
         Task<string> GetFullNameUserByUserIdAsync(int userId);
         Task<Language> GetCurrentUserLanguage();
         Task<Language> GetLanguageByUserIdAsync(int userId);
+        Task<int> GetFirstUserIdInDb();
     }
 }
