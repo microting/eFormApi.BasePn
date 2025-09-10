@@ -44,7 +44,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
                 .Where(m =>
                 {
                     var parameters = m.GetParameters().ToList();
-                    //Put more restriction here to ensure selecting the right overload                
+                    //Put more restriction here to ensure selecting the right overload
                     return parameters.Count == 2; //overload that has 2 parameters
                 }).Single();
             //The linq's OrderBy<TSource, TKey> has two generic types, which provided here
@@ -76,7 +76,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
                 .Where(m =>
                 {
                     var parameters = m.GetParameters().ToList();
-                    //Put more restriction here to ensure selecting the right overload                
+                    //Put more restriction here to ensure selecting the right overload
                     return parameters.Count == 2; //overload that has 2 parameters
                 }).Single();
             //The linq's OrderByDescending<TSource, TKey> has two generic types, which provided here
@@ -129,53 +129,53 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
 
             // foreach on all fields on entity type and take only string type fields and fields, whose names were transmitted
             foreach (var prop in typeof(TSource).GetProperties().Where(x =>
-                         propertyNames.Contains(x.Name) && (x.PropertyType == typeof(string) ||
-                                                            x.PropertyType == typeof(int?) ||
-                                                            x.PropertyType == typeof(DateTime?) ||
-                                                            x.PropertyType == typeof(int) ||
-                                                            x.PropertyType == typeof(DateTime))))
+                     propertyNames.Contains(x.Name) && (x.PropertyType == typeof(string) ||
+                                                        x.PropertyType == typeof(int?) ||
+                                                        x.PropertyType == typeof(DateTime?) ||
+                                                        x.PropertyType == typeof(int) ||
+                                                        x.PropertyType == typeof(DateTime))))
             {
-                // x => x.propName
                 var memberExpression = Expression.PropertyOrField(parameter, prop.Name);
 
-                // if type prop not string - need to call ToString()
-                MethodCallExpression toStringCall;
+                MethodCallExpression toStringCall = null;
                 if (prop.PropertyType == typeof(DateTime))
                 {
-                    // x.propName.ToString()
-                    toStringCall = Expression.Call(memberExpression,dateTimeToStringMethod);
+                    toStringCall = Expression.Call(memberExpression, dateTimeToStringMethod);
                 }
                 else if (prop.PropertyType == typeof(DateTime?))
                 {
-                    // x.propName.ToString()
                     toStringCall = Expression.Call(memberExpression, nullebleDateTimeToStringMethod);
                 }
                 else if (prop.PropertyType == typeof(int?))
                 {
-                    // x.propName.ToString()
                     toStringCall = Expression.Call(memberExpression, nullebleIntToStringMethod);
                 }
                 else if (prop.PropertyType == typeof(int))
                 {
-                    // x.propName.ToString()
                     toStringCall = Expression.Call(memberExpression, intToStringMethod);
+                }
+
+                var valueExpression = Expression.Constant(filter.ToUpper(), typeof(string));
+
+                if (prop.PropertyType == typeof(string))
+                {
+                    // x.propName != null
+                    var notNull = Expression.NotEqual(memberExpression, Expression.Constant(null, typeof(string)));
+                    // x.propName.ToUpper()
+                    var toUpperExpression = Expression.Call(memberExpression, toUpperMethod);
+                    // x.propName.ToUpper().Contains(filter.ToUpper())
+                    var containsExpression = Expression.Call(toUpperExpression, containsMethod, valueExpression);
+                    // x.propName != null && x.propName.ToUpper().Contains(filter.ToUpper())
+                    var safeContains = Expression.AndAlso(notNull, containsExpression);
+                    expressions.Add(safeContains);
                 }
                 else
                 {
-                    // prop is string. not need call ToString()
-                    toStringCall = null;
+                    // x.propName.ToString().ToUpper().Contains(filter.ToUpper())
+                    var toUpperExpression = Expression.Call(toStringCall, toUpperMethod);
+                    var containsExpression = Expression.Call(toUpperExpression, containsMethod, valueExpression);
+                    expressions.Add(containsExpression);
                 }
-
-                // string valueExpression = filter;
-                var valueExpression = Expression.Constant(filter.ToUpper(), typeof(string));
-
-                // x.propName(x.propName is string ? none : .ToString()).ToUpper()
-                var toUpperExpression = Expression.Call(toStringCall == null ? memberExpression : toStringCall, toUpperMethod);
-
-                // x.propName(x.propName is string ? none : .ToString()).ToUpper().Contains(filter.ToUpper())
-                var containsExpression = Expression.Call(toUpperExpression, containsMethod, valueExpression);
-
-                expressions.Add(containsExpression);
             }
 
             // if not need filtration - return
@@ -190,7 +190,7 @@ namespace Microting.eFormApi.BasePn.Infrastructure.Extensions
             // and start from 1 add contains like x.Name.Contains(filter) || x.Description.Contains(filter) || ...
             for (var i = 1; i < expressions.Count; i++)
             {
-                orExpression = Expression.OrElse(orExpression, expressions[i]);
+                orExpression = Expression.Or(orExpression, expressions[i]);
             }
 
             // x.Name or x.Description - **example**
