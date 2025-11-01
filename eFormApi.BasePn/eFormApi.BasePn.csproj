@@ -16,6 +16,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microting.eForm" Version="9.0.69" />
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.10" />
   </ItemGroup>
   <ItemGroup>
@@ -23,9 +24,6 @@
           <Pack>true</Pack>
           <PackagePath>\</PackagePath>
       </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\eform-sdk\eFormCore\Microting.eForm.csproj" />
   </ItemGroup>
 
 </Project>
