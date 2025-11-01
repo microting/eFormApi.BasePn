@@ -12,7 +12,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="9.0.10" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.10" />
-    <PackageReference Include="Microting.eForm" Version="9.0.68" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -24,6 +23,9 @@
           <Pack>true</Pack>
           <PackagePath>\</PackagePath>
       </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\eform-sdk\eFormCore\Microting.eForm.csproj" />
   </ItemGroup>
 
 </Project>
