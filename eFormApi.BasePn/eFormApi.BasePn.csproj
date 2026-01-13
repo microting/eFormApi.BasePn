@@ -17,7 +17,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microting.eForm" Version="10.0.3" />
-    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.1" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="10.0.2" />
   </ItemGroup>
   <ItemGroup>
       <None Include="images\icon.png">
