@@ -22,15 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities.Malling
-{
-    using System.ComponentModel.DataAnnotations;
-    using Base;
+namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities.Malling;
 
-    public class EmailTag : BaseEntity
-    {
-        [Required]
-        [StringLength(250)]
-        public string Name { get; set; }
-    }
+using System.ComponentModel.DataAnnotations;
+using Base;
+
+public class EmailTag : BaseEntity
+{
+    [Required]
+    [StringLength(250)]
+    public string Name { get; set; }
 }

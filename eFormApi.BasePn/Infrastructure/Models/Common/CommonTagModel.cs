@@ -18,12 +18,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common
-{
-    public class CommonTagModel
-    {
-        public int? Id { get; set; }
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common;
 
-        public string Name { get; set; }
-    }
+public class CommonTagModel
+{
+    public int? Id { get; set; }
+
+    public string Name { get; set; }
 }

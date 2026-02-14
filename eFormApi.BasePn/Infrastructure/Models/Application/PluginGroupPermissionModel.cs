@@ -1,7 +1,6 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application;
+
+public class PluginGroupPermissionModel: PluginPermissionModel
 {
-    public class PluginGroupPermissionModel: PluginPermissionModel
-    {
-        public bool IsEnabled { get; set; }
-    }
+    public bool IsEnabled { get; set; }
 }

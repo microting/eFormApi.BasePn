@@ -1,10 +1,9 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Consts
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Consts;
+
+public static class LanguageNames
 {
-    public static class LanguageNames
-    {
-        public const string English = "English";
-        public const string Danish = "Danish";
-        public const string German = "German";
-        public const string Ukrainian = "Ukrainian";
-    }
+    public const string English = "English";
+    public const string Danish = "Danish";
+    public const string German = "German";
+    public const string Ukrainian = "Ukrainian";
 }

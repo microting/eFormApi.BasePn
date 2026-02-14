@@ -1,7 +1,6 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Delegates
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Delegates;
+
+public static class ReloadDbConfigurationDelegates
 {
-    public static class ReloadDbConfigurationDelegates
-    {
-        public static ReloadDbConfiguration ReloadDbConfigurationDelegate;
-    }
+    public static ReloadDbConfiguration ReloadDbConfigurationDelegate;
 }

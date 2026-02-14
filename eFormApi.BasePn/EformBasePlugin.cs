@@ -8,65 +8,64 @@ using Microting.eFormApi.BasePn.Infrastructure.Helpers;
 using System.Collections.Generic;
 using Microting.eFormApi.BasePn.Infrastructure.Models.Application.NavigationMenu;
 
-namespace Microting.eFormApi.BasePn
+namespace Microting.eFormApi.BasePn;
+
+public class EformBasePlugin : IEformPlugin
 {
-    public class EformBasePlugin : IEformPlugin
+    public string Name => "Microting eForm Base plugin";
+
+    public string PluginId => "EformBasePlugin";
+
+    public string PluginPath => PluginAssembly().Location;
+
+    public string PluginBaseUrl => "EformBasePlugin";
+
+    public Assembly PluginAssembly()
     {
-        public string Name => "Microting eForm Base plugin";
+        return typeof(EformBasePlugin).GetTypeInfo().Assembly;
+    }
 
-        public string PluginId => "EformBasePlugin";
+    public void Configure(IApplicationBuilder appBuilder)
+    {
+    }
 
-        public string PluginPath => PluginAssembly().Location;
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddScoped<IEformPlugin, EformBasePlugin>();
+    }
 
-        public string PluginBaseUrl => "EformBasePlugin";
+    public void ConfigureOptionsServices(IServiceCollection services, IConfiguration configuration)
+    {
+    }
 
-        public Assembly PluginAssembly()
-        {
-            return typeof(EformBasePlugin).GetTypeInfo().Assembly;
-        }
+    public void ConfigureDbContext(IServiceCollection services, string connectionString)
+    {
+    }
 
-        public void Configure(IApplicationBuilder appBuilder)
-        {
-        }
+    public MenuModel HeaderMenu(IServiceProvider serviceProvider)
+    {
+        var result = new MenuModel();
+        return result;
+    }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddScoped<IEformPlugin, EformBasePlugin>();
-        }
+    public List<PluginMenuItemModel> GetNavigationMenu(IServiceProvider serviceProvider)
+    {
+        var result = new List<PluginMenuItemModel>();
+        return result;
+    }
 
-        public void ConfigureOptionsServices(IServiceCollection services, IConfiguration configuration)
-        {
-        }
+    public void SeedDatabase(string connectionString)
+    {
+    }
 
-        public void ConfigureDbContext(IServiceCollection services, string connectionString)
-        {
-        }
+    public void AddPluginConfig(
+        IConfigurationBuilder builder,
+        string connectionString)
+    {
+    }
 
-        public MenuModel HeaderMenu(IServiceProvider serviceProvider)
-        {
-            var result = new MenuModel();
-            return result;
-        }
-
-        public List<PluginMenuItemModel> GetNavigationMenu(IServiceProvider serviceProvider)
-        {
-            var result = new List<PluginMenuItemModel>();
-            return result;
-        }
-
-        public void SeedDatabase(string connectionString)
-        {
-        }
-
-        public void AddPluginConfig(
-            IConfigurationBuilder builder,
-            string connectionString)
-        {
-        }
-
-        public PluginPermissionsManager GetPermissionsManager(string connectionString)
-        {
-            return null;
-        }
+    public PluginPermissionsManager GetPermissionsManager(string connectionString)
+    {
+        return null;
     }
 }

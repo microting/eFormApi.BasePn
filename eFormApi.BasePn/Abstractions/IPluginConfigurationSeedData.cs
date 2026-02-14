@@ -1,9 +1,8 @@
 ﻿using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 
-namespace Microting.eFormApi.BasePn.Abstractions
+namespace Microting.eFormApi.BasePn.Abstractions;
+
+public interface IPluginConfigurationSeedData
 {
-    public interface IPluginConfigurationSeedData
-    {
-        PluginConfigurationValue[] Data { get; }
-    }
+    PluginConfigurationValue[] Data { get; }
 }

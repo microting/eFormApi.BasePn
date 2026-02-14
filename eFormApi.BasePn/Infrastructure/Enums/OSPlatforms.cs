@@ -1,9 +1,8 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Enums
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Enums;
+
+public enum OSPlatforms
 {
-    public enum OSPlatforms
-    {
-        Linux,
-        OSX,
-        Windows
-    }
+    Linux,
+    OSX,
+    Windows
 }

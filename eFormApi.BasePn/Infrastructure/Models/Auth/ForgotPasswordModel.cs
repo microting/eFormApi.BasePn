@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Auth
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Auth;
+
+public class ForgotPasswordModel
 {
-    public class ForgotPasswordModel
-    {
-        [Required] public string Email { get; set; }
-    }
+    [Required] public string Email { get; set; }
 }

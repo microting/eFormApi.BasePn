@@ -18,16 +18,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common;
+
+public class CommonTranslationsModel
 {
-    public class CommonTranslationsModel
-    {
-        public int? Id { get; set; }
+    public int? Id { get; set; }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public string Description { get; set; }
+    public string Description { get; set; }
 
-        public int LanguageId { get; set; }
-    }
+    public int LanguageId { get; set; }
 }

@@ -1,7 +1,6 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Delegates.CaseUpdate
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Delegates.CaseUpdate;
+
+public static class CaseUpdateDelegates
 {
-    public static class CaseUpdateDelegates
-    {
-        public static CaseUpdateDelegate CaseUpdateDelegate;
-    }
+    public static CaseUpdateDelegate CaseUpdateDelegate;
 }

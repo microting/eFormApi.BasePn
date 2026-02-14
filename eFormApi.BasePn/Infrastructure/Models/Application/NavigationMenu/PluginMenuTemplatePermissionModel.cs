@@ -1,9 +1,8 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.NavigationMenu
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.NavigationMenu;
+
+public class PluginMenuTemplatePermissionModel
 {
-    public class PluginMenuTemplatePermissionModel
-    {
-        public string ClaimName { get; set; }
-        public string PermissionName { get; set; }
-        public string PermissionTypeName { get; set; }
-    }
+    public string ClaimName { get; set; }
+    public string PermissionName { get; set; }
+    public string PermissionTypeName { get; set; }
 }

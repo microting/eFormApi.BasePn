@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application;
+
+public class MenuItemModel
 {
-    public class MenuItemModel
-    {
-        public string Name { get; set; }
-        public string LocaleName { get; set; }
-        public string Link { get; set; }
-        public string E2EId { get; set; }
-        public int Position { get; set; }
+    public string Name { get; set; }
+    public string LocaleName { get; set; }
+    public string Link { get; set; }
+    public string E2EId { get; set; }
+    public int Position { get; set; }
 
-        public List<MenuItemModel> MenuItems { get; set; }
-            = new List<MenuItemModel>();
+    public List<MenuItemModel> MenuItems { get; set; }
+        = new List<MenuItemModel>();
 
-        public List<string> Guards { get; set; }
-            = new List<string>();
+    public List<string> Guards { get; set; }
+        = new List<string>();
 
-        public bool IsInternalLink { get; set; }
-    }
+    public bool IsInternalLink { get; set; }
 }

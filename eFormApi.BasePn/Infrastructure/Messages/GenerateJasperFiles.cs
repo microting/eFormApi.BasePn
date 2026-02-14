@@ -1,12 +1,11 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Messages
-{
-    public class GenerateJasperFiles
-    {
-        public int TemplateId { get; protected set; }
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Messages;
 
-        public GenerateJasperFiles(int templateId)
-        {
-            TemplateId = templateId;
-        }
+public class GenerateJasperFiles
+{
+    public int TemplateId { get; protected set; }
+
+    public GenerateJasperFiles(int templateId)
+    {
+        TemplateId = templateId;
     }
 }

@@ -22,25 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.Case.CaseEdit
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application.Case.CaseEdit;
+
+using System;
+using System.Collections.Generic;
+
+public class ReplyRequest
 {
-    using System;
-    using System.Collections.Generic;
+    public int Id { get; set; }
 
-    public class ReplyRequest
-    {
-        public int Id { get; set; }
+    public string Label { get; set; }
 
-        public string Label { get; set; }
+    public DateTime DoneAt { get; set; }
 
-        public DateTime DoneAt { get; set; }
+    public bool IsDoneAtEditable { get; set; }
 
-        public bool IsDoneAtEditable { get; set; }
+    public List<CaseEditRequest> ElementList { get; set; }
 
-        public List<CaseEditRequest> ElementList { get; set; }
+    public int ExtraId { get; set; }
 
-        public int ExtraId { get; set; }
-
-        public int SiteId { get; set; }
-    }
+    public int SiteId { get; set; }
 }

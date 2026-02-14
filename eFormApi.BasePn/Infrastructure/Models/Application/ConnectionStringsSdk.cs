@@ -1,7 +1,6 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application;
+
+public class ConnectionStringsSdk
 {
-    public class ConnectionStringsSdk
-    {
-        public string SdkConnection { get; set; }
-    }
+    public string SdkConnection { get; set; }
 }

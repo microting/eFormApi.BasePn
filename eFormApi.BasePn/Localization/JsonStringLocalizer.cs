@@ -7,95 +7,94 @@ using System.Text;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 
-namespace Microting.eFormApi.BasePn.Localization
+namespace Microting.eFormApi.BasePn.Localization;
+
+public class JsonStringLocalizer : IStringLocalizer
 {
-    public class JsonStringLocalizer : IStringLocalizer
+    private readonly List<JsonLocalization> _localization;
+
+    public JsonStringLocalizer()
     {
-        private readonly List<JsonLocalization> _localization;
+        _localization =
+            JsonConvert.DeserializeObject<List<JsonLocalization>>(File.ReadAllText(@"localization.json"));
+    }
 
-        public JsonStringLocalizer()
+    public JsonStringLocalizer(Type resourceSource)
+    {
+        if (resourceSource == null)
         {
-            _localization =
-                JsonConvert.DeserializeObject<List<JsonLocalization>>(File.ReadAllText(@"localization.json"));
+            throw new ArgumentNullException(nameof(resourceSource));
         }
 
-        public JsonStringLocalizer(Type resourceSource)
+        var assembly = resourceSource.Assembly;
+        var assemblyName = assembly.GetName().Name;
+        var resourceStream = assembly.GetManifestResourceStream($"{assemblyName}.Resources.localization.json");
+        if (resourceStream == null)
         {
-            if (resourceSource == null)
-            {
-                throw new ArgumentNullException(nameof(resourceSource));
-            }
-
-            var assembly = resourceSource.Assembly;
-            var assemblyName = assembly.GetName().Name;
-            var resourceStream = assembly.GetManifestResourceStream($"{assemblyName}.Resources.localization.json");
-            if (resourceStream == null)
-            {
-                throw new NullReferenceException($"Localization not found in {assemblyName}");
-            }
-
-            using (var reader = new StreamReader(resourceStream, Encoding.UTF8))
-            {
-                var json = reader.ReadToEndAsync().Result;
-                if (!string.IsNullOrEmpty(json))
-                {
-                    _localization = JsonConvert.DeserializeObject<List<JsonLocalization>>(json);
-                }
-            }
+            throw new NullReferenceException($"Localization not found in {assemblyName}");
         }
 
-        public LocalizedString this[string name]
+        using (var reader = new StreamReader(resourceStream, Encoding.UTF8))
         {
-            get
+            var json = reader.ReadToEndAsync().Result;
+            if (!string.IsNullOrEmpty(json))
             {
-                var value = GetString(name);
-                return new LocalizedString(name, value ?? name, resourceNotFound: value == null);
+                _localization = JsonConvert.DeserializeObject<List<JsonLocalization>>(json);
             }
         }
+    }
 
-        public LocalizedString this[string name, params object[] arguments]
+    public LocalizedString this[string name]
+    {
+        get
         {
-            get
-            {
-                var format = GetString(name);
-                var value = string.Format(format ?? name, arguments);
-                return new LocalizedString(name, value, resourceNotFound: format == null);
-            }
+            var value = GetString(name);
+            return new LocalizedString(name, value ?? name, resourceNotFound: value == null);
+        }
+    }
+
+    public LocalizedString this[string name, params object[] arguments]
+    {
+        get
+        {
+            var format = GetString(name);
+            var value = string.Format(format ?? name, arguments);
+            return new LocalizedString(name, value, resourceNotFound: format == null);
+        }
+    }
+
+    public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
+    {
+        return _localization.Where(l => l.LocalizedValue.Keys.Any(lv => lv == CultureInfo.CurrentCulture.Name))
+            .Select(l => new LocalizedString(l.Key, l.LocalizedValue[CultureInfo.CurrentCulture.Name], true));
+    }
+
+    public IStringLocalizer WithCulture(CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+
+    private string GetString(string name)
+    {
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new ArgumentNullException(nameof(name));
         }
 
-        public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
+        var query = _localization.Where(l =>
+            l.LocalizedValue.Keys.Any(lv => lv == CultureInfo.CurrentCulture.Name));
+        var value = query.FirstOrDefault(l => l.Key == name);
+        if (value == null)
         {
-            return _localization.Where(l => l.LocalizedValue.Keys.Any(lv => lv == CultureInfo.CurrentCulture.Name))
-                .Select(l => new LocalizedString(l.Key, l.LocalizedValue[CultureInfo.CurrentCulture.Name], true));
+            return name;
         }
 
-        public IStringLocalizer WithCulture(CultureInfo culture)
+        var result = value.LocalizedValue[CultureInfo.CurrentCulture.Name];
+        if (string.IsNullOrEmpty(result))
         {
-            throw new NotImplementedException();
+            return name;
         }
 
-        private string GetString(string name)
-        {
-            if (string.IsNullOrEmpty(name))
-            {
-                throw new ArgumentNullException(nameof(name));
-            }
-
-            var query = _localization.Where(l =>
-                l.LocalizedValue.Keys.Any(lv => lv == CultureInfo.CurrentCulture.Name));
-            var value = query.FirstOrDefault(l => l.Key == name);
-            if (value == null)
-            {
-                return name;
-            }
-
-            var result = value.LocalizedValue[CultureInfo.CurrentCulture.Name];
-            if (string.IsNullOrEmpty(result))
-            {
-                return name;
-            }
-
-            return result;
-        }
+        return result;
     }
 }

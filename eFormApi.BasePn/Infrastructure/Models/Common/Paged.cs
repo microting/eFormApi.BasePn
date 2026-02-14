@@ -18,14 +18,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common;
+
+using System.Collections.Generic;
+
+public class Paged<T>
 {
-    using System.Collections.Generic;
+    public int Total { get; set; }
 
-    public class Paged<T>
-    {
-        public int Total { get; set; }
-
-        public List<T> Entities { get; set; }
-    }
+    public List<T> Entities { get; set; }
 }

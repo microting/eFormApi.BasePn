@@ -18,13 +18,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common
-{
-	using System.Collections.Generic;
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common;
 
-	public class CommonBulkTagsModel
-	{
-		public List<string> TagNames { set; get; }
-			= new();
-	}
+using System.Collections.Generic;
+
+public class CommonBulkTagsModel
+{
+	public List<string> TagNames { set; get; }
+		= new();
 }

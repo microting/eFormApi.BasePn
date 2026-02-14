@@ -22,14 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common
+namespace Microting.eFormApi.BasePn.Infrastructure.Models.Common;
+
+public class FilterAndSortModel
 {
-    public class FilterAndSortModel
-    {
-        public string NameFilter { get; set; }
+    public string NameFilter { get; set; }
 
-        public string Sort { get; set; }
+    public string Sort { get; set; }
 
-        public bool IsSortDsc { get; set; }
-    }
+    public bool IsSortDsc { get; set; }
 }

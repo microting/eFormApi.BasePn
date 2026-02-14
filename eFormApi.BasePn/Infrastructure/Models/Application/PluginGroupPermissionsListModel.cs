@@ -1,11 +1,10 @@
-﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application
+﻿namespace Microting.eFormApi.BasePn.Infrastructure.Models.Application;
+
+using System.Collections.Generic;
+
+public class PluginGroupPermissionsListModel
 {
-    using System.Collections.Generic;
+    public int GroupId { get; set; }
 
-    public class PluginGroupPermissionsListModel
-    {
-        public int GroupId { get; set; }
-
-        public ICollection<PluginGroupPermissionModel> Permissions = new List<PluginGroupPermissionModel>();
-    }
+    public ICollection<PluginGroupPermissionModel> Permissions = new List<PluginGroupPermissionModel>();
 }

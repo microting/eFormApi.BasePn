@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities
+namespace Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
+
+public class EformUserRole : IdentityUserRole<int>
 {
-    public class EformUserRole : IdentityUserRole<int>
-    {
-        public virtual EformUser User { get; set; }
+    public virtual EformUser User { get; set; }
         
-        public virtual EformRole Role { get; set; }
-    }
+    public virtual EformRole Role { get; set; }
 }

@@ -21,14 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-namespace Microting.eFormApi.BasePn.Abstractions
-{
-    using System.Threading.Tasks;
-    using Infrastructure.Models.API;
-    using Infrastructure.Models.Application.CasePosts;
+namespace Microting.eFormApi.BasePn.Abstractions;
 
-    public interface ICasePostBaseService
-    {
-        Task<OperationDataResult<CasePostsCommonModel>> GetCommonPosts(CasePostsRequestCommonModel requestModel);
-    }
+using System.Threading.Tasks;
+using Infrastructure.Models.API;
+using Infrastructure.Models.Application.CasePosts;
+
+public interface ICasePostBaseService
+{
+    Task<OperationDataResult<CasePostsCommonModel>> GetCommonPosts(CasePostsRequestCommonModel requestModel);
 }
