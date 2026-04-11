@@ -17,6 +17,7 @@ public class EformUser : IdentityUser<int>
 
     public virtual ICollection<EformUserRole> UserRoles { get; set; }
     public bool DarkTheme { get; set; }
+    public string ThemeVariant { get; set; } = "eform";
     public string TimeZone { get; set; }
     public string Formats { get; set; }
     public string ArchiveSoftwareVersion { get; set; }
