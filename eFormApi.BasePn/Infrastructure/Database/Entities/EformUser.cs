@@ -37,4 +37,14 @@ public class EformUser : IdentityUser<int>
     public string EmailSha256 { get; set; }
     public string ProfilePicture { get; set; }
     public string ProfilePictureSnapshot { get; set; }
+    /// <summary>
+    /// False blocks sign-in for this account, a resigned employee say. Not the same as
+    /// Identity's lockout, which is the automatic brute-force delay.
+    /// </summary>
+    // Keep the "= true". The mapping's HasDefaultValue(true) makes true this property's
+    // sentinel, and EF Core omits a sentinel-valued column from the INSERT so the store
+    // default applies. Without the initializer a new EformUser holds false, EF Core writes
+    // that explicitly, and every account would be created disabled. (That is precisely what
+    // happens to the shadow property ExternalLoginEnabled today, which cannot have one.)
+    public bool IsActive { get; set; } = true;
 }
