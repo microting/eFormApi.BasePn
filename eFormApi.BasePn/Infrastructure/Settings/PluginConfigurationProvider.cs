@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Castle.Core.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
@@ -50,16 +52,20 @@ public class PluginConfigurationProvider<TDbContext>
         {
             using var dbContext = _dbContextFactory.CreateDbContext(new[] {_connectionString});
             dbContext.Database.Migrate();
-            Data = dbContext.PluginConfigurationValues
-                .AsNoTracking()
-                .ToDictionary(c => c.Name, c => c.Value);
-
-            if (!Data.Any())
+            // Start from the seed defaults, so keys missing in the DB still get a value,
+            // and let the DB rows win
+            var data = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var item in seedData)
             {
-                Data = seedData.ToDictionary(
-                    item => item.Name,
-                    item => item.Value);
+                data[item.Name] = item.Value;
             }
+
+            foreach (var item in dbContext.PluginConfigurationValues.AsNoTracking())
+            {
+                data[item.Name] = item.Value;
+            }
+
+            Data = data;
         }
     }
 }
