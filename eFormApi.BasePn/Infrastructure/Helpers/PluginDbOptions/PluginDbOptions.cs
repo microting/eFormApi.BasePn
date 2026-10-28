@@ -107,19 +107,18 @@ public class PluginDbOptions<T> : IPluginDbOptions<T> where T : class, new()
         {
             if (property.MemberType == MemberTypes.Property)
             {
-                try
+                var value = property.GetValue(currentObject, null);
+                if (value == null)
                 {
-                    var value = property.GetValue(currentObject, null);
-                    var type = value.GetType();
-                    if (types.Contains(type))
-                    {
-                        dictionary.Add($"{prefix}:{property.Name}", value.ToString());
-                    }
-                }
-                catch (NullReferenceException)
-                {
+                    // Nothing to save; skip it instead of failing the whole update
                     Console.WriteLine($"{property.Name} was not found in the PluginConfigurationValues table, are you missing a seed for it?");
-                    throw new NullReferenceException($"{property.Name} was not found in the PluginConfigurationValues table, are you missing a seed for it?");
+                    continue;
+                }
+
+                var type = value.GetType();
+                if (types.Contains(type))
+                {
+                    dictionary.Add($"{prefix}:{property.Name}", value.ToString());
                 }
             }
         }
