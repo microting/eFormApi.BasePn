@@ -23,9 +23,10 @@ public class EformUser : IdentityUser<int>
     /// keeps following it, "light" and "dark" are fixed choices. DarkTheme remains the
     /// fallback appearance for consumers that predate this column.
     /// </summary>
-    // Keep the "= system". The mapping's HasDefaultValue("system") makes that string this
-    // property's sentinel, and EF Core omits a sentinel-valued column from the INSERT so
-    // the store default applies. See the remarks on IsActive for the same arrangement.
+    // Keep the "= system". New accounts get "system" from this initialiser, which EF writes
+    // explicitly on every INSERT (a string has no default-derived sentinel, unlike IsActive).
+    // The store-side DEFAULT in the mapping is what fills EXISTING rows with "system" when
+    // the column is added, and the backfill migration keys on that marker.
     public string ThemeMode { get; set; } = "system";
     public string TimeZone { get; set; }
     public string Formats { get; set; }
