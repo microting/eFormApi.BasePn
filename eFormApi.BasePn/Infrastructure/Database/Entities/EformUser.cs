@@ -18,6 +18,15 @@ public class EformUser : IdentityUser<int>
     public virtual ICollection<EformUserRole> UserRoles { get; set; }
     public bool DarkTheme { get; set; }
     public string ThemeVariant { get; set; } = "eform";
+    /// <summary>
+    /// How this account picks its appearance: "system" follows the operating system and
+    /// keeps following it, "light" and "dark" are fixed choices. DarkTheme remains the
+    /// fallback appearance for consumers that predate this column.
+    /// </summary>
+    // Keep the "= system". The mapping's HasDefaultValue("system") makes that string this
+    // property's sentinel, and EF Core omits a sentinel-valued column from the INSERT so
+    // the store default applies. See the remarks on IsActive for the same arrangement.
+    public string ThemeMode { get; set; } = "system";
     public string TimeZone { get; set; }
     public string Formats { get; set; }
     public string ArchiveSoftwareVersion { get; set; }
