@@ -41,7 +41,11 @@ public class TestPluginDbContextFactory(SqliteConnection connection)
     {
         var options = new DbContextOptionsBuilder<TestPluginDbContext>()
             .UseSqlite(connection)
-            .ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning))
+            // The schema comes from EnsureCreated, so this context has no migrations;
+            // EF Core 11 turns MigrationsNotFound into an error on Database.Migrate()
+            .ConfigureWarnings(w => w.Ignore(
+                RelationalEventId.PendingModelChangesWarning,
+                RelationalEventId.MigrationsNotFound))
             .Options;
         return new TestPluginDbContext(options);
     }
